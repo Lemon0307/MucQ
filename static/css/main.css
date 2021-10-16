@@ -5,18 +5,17 @@ body {
 }
 
 .bar {
-    position: relative;
-    display: flex;
     float: top;
-    margin-right: 10px;
+    text-align: center;
 }
 
 .content {
      background-color: white;
-     border-color: black;
-     border-width: 10px;
-     position: relative;
-     display: flex;
+     border-width: black;
      float: top;
      padding: 10px;
+}
+
+.title {
+    text-align: center;
 }
