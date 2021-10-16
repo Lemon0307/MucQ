@@ -1,4 +1,19 @@
 body {
     margin: 9;
-    font-family: sans-serif;
+    background-color: aquamarine;
+}
+
+.bar {
+    position: relative;
+    display: flex;
+    float: top;
+}
+
+.content {
+     background-color: white;
+     border-color: black;
+     border-width: 10px;
+     position: relative;
+     display: flex;
+     float: top;
 }
