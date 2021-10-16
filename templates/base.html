@@ -10,12 +10,11 @@
 <body>
     <h1 class="name">TradeQ</h1>
     <div class="bar">
-        
+        <a href="Home">Home</a>
+        <a href="Feedback">Feedback</a>
     </div>
     <div class="content">
-        <p>sdofui;sdiofjofjsdi;of;shf;osdih;ioh;sodivh;osdihv;osidhv;oihsd;voih;oih</p>
+        {% block body %}{% endblock %}
     </div>
-    <a href="{{ url_for('static', filename='feedback.html') }}">bruh</a>
-    {% block body %}{% endblock %}
 </body>
 </html>

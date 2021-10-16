@@ -1,12 +1,14 @@
 body {
     margin: 9;
     background-color: aquamarine;
+    font-family: sans-serif;
 }
 
 .bar {
     position: relative;
     display: flex;
     float: top;
+    margin-right: 10px;
 }
 
 .content {
@@ -16,4 +18,5 @@ body {
      position: relative;
      display: flex;
      float: top;
+     padding: 10px;
 }
