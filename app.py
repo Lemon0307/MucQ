@@ -9,13 +9,27 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
 app.config['SECRET_KEY'] = '188db0c1a734f4d4d31f26f6c0ef5562d7aa4910caeb09b2bd402a25edba2d51b4000e2245f818c9e1216cb62e3e98761ebbaac40510ce4608213ef327e32e12322f02e423'
 db = SQLAlchemy(app)
 
-class Messages(db.Model):
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(200), nullable=False)
-    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    username = db.Column(db.String(20), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    image_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    password = db.Column(db.String(60), nullable=False)
+    posts = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self):
-        return '<Task %r>' % self.id
+        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"
+
 
 @app.route('/')
 def index():

@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body %}
+    <div class="content">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
         <div class="form-group">
@@ -75,5 +76,6 @@
             Already Have an Account? <a class="ml-2" href="{{ url_for('login') }}">Sign In</a>
         </small>
     </form>
+</div>
 </div>
 {% endblock %}
