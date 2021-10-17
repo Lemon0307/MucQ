@@ -2,20 +2,45 @@ body {
     margin: 9;
     background-color: aquamarine;
     font-family: sans-serif;
+    position: relative;
 }
 
 .bar {
-    float: top;
+    float: left;
     text-align: center;
+    text-decoration: none;
+    background-color: lightgrey;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding: 15px; 
+}
+
+.wrapper {
+    display: flex;
+    padding: 20px;
 }
 
 .content {
-     background-color: white;
-     border-width: black;
-     float: top;
-     padding: 10px;
+    background-color: white;
+    border-width: black;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
 }
 
-.title {
+.form-group {
     text-align: center;
+}
+
+.form-control {
+    padding: 10px;
+}
+
+.form-control-label {
+    text-align: right;
+}
+
+.name {
+    width: 100%;
+    float: top;
 }
