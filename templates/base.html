@@ -20,16 +20,17 @@
         {% endwith %}
         <div class="wrapper">
             <div class="bar">
-        <a class="bar" href="/" alink="black" vlink="black">Home</a>
+        <a class="bar" href="{{ url_for('index') }}" alink="black" vlink="black">Home</a>
         <br>
-        <a class="bar" href="/support" alink="black" vlink="black">Support</a>
+        <a class="bar" href="{{ url_for('about') }}" alink="black" vlink="black">About</a>
         <br>
-        <a class="bar" href="/login" alink="black" vlink="black">Login</a>
+        <a class="bar" href="{{ url_for('contactus') }}" alink="black" vlink="black">Contact Us</a>
         <br>
-        <a class="bar" href="/signup" alink="black" vlink="black">Sign Up</a>
+        <a class="bar" href="{{ url_for('login') }}" alink="black" vlink="black">Login</a>
+        <br>
+        <a class="bar" href="{{ url_for('signup') }}" alink="black" vlink="black">Sign Up</a>
     </div>
             {% block body %}{% endblock %}
         </div>
-        
 </body>
 </html>

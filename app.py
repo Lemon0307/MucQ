@@ -21,11 +21,15 @@ class Messages(db.Model):
 def index():
     return render_template('index.html')
 
-@app.route('/support')
-def feedback():
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/contactus')
+def contactus():
     if request.method == 'POST':
-        return redirect(url_for('support'))
-    return render_template('support.html')
+        return redirect(url_for('contactus'))
+    return render_template('contactus.html')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -35,11 +39,15 @@ def signup():
         return redirect(url_for('index'))
     return render_template('sign_up.html', form=form)
 
-@app.route('/login')
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        flash(f"Successfully logged in as {form.username.data}", "success")
+        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
+            flash(f"Successfully logged in", "success")
+            return redirect(url_for('index'))
+        else:
+            flash('Login unsuccessful. Please try again', 'danger')
     return render_template('login.html', form=form)
 
 if __name__ == "__main__":
