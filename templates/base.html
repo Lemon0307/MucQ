@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <title> TradeQ </title>
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -18,19 +19,21 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-        <div class="wrapper">
-            <div class="bar">
-        <a class="bar" href="{{ url_for('index') }}" alink="black" vlink="black">Home</a>
-        <br>
-        <a class="bar" href="{{ url_for('about') }}" alink="black" vlink="black">About</a>
-        <br>
-        <a class="bar" href="{{ url_for('contactus') }}" alink="black" vlink="black">Contact Us</a>
-        <br>
-        <a class="bar" href="{{ url_for('login') }}" alink="black" vlink="black">Login</a>
-        <br>
-        <a class="bar" href="{{ url_for('signup') }}" alink="black" vlink="black">Sign Up</a>
+        <div class="wrapper"> 
+                <ul class="bar">
+                    <a class="bar bar-text" href="{{ url_for('index') }}" link="black" alink="black" vlink="black">Home</a>
+                    <br>
+                    <a class="bar bar-text" href="{{ url_for('about') }}" link="black" alink="black" vlink="black">About</a>
+                    <br>
+                    <a class="bar bar-text" href="{{ url_for('contactus') }}" link="black" alink="black" vlink="black">Contact Us</a>
+                    <br>
+                    <a class="bar bar-text" href="{{ url_for('login') }}" link="black" alink="black" vlink="black">Login</a>
+                    <br>
+                    <a class="bar bar-text" href="{{ url_for('signup') }}" link="black" alink="black" vlink="black">Sign Up</a>
+                </ul>
+        {% block body %}{% endblock %}
     </div>
-            {% block body %}{% endblock %}
+            
         </div>
 </body>
 </html>
