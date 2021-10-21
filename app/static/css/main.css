@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap');
+
 body {
     margin: 9;
-    background-color: rgb(0, 60, 2555);
-    color: black;
-    font-family: sans-serif;
+    background-color: rgba(60,75,106,255);
+    font-family: 'Mukta', sans-serif;
     position: relative;
 }
 
@@ -11,29 +13,33 @@ body {
     text-align: center;
     color: black;
     text-decoration: none;
-    background-color: purple;
+    background-color: #8CA1CD;
     padding: 15px;
-}
-
-.bar-text {
+    border-radius: 15px;
     font-size: 22px;
 }
 
 .bar:hover {
-    color:orangered ;
+    color:#3498DB ;
 }
 
-.wrapper {
+.wrapper-2 {
     display: flex;
     padding: 0px;
 }
 
+.wrapper-1 {
+    justify-content: space-between;
+}
+
 .content {
-    background-color: rgb(0, 217, 255);
-    border-width: black;
+    background-color: #E4EAF6;
     text-align: left;
     width: 100%;
-    padding: 20px;
+    padding: 40px;
+    font-size: 20px;
+    margin-left: 10px;
+    border-radius: 15px;
 }
 
 .form-group {
@@ -48,7 +54,40 @@ body {
     text-align: right;
 }
 
-.name {
+.top-bar {
+    display: flex;
     width: 100%;
     float: top;
+    background-color: #879BC7;
+    border-radius: 15px;
 }
+
+.top-bar-text {
+    text-decoration: none;
+    color: black;
+    text-align: right;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 50px;
+    margin-left: 50px;
+    font-size: 22px;
+}
+
+.top-bar-text:hover {
+    color: #3498DB;
+}
+
+.name {
+    color: white;
+    margin-left: 50px;
+    text-align: left;
+}
+
+.alert-success {
+    padding: 20px;
+    background-color: #66D622;
+    font-size: 20px;
+    border-radius: 15px;
+    font-family: 'Source Code Pro', monospace;
+}
+
