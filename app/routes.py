@@ -2,7 +2,7 @@ from flask import render_template, url_for, redirect, request, flash, Blueprint
 from app.forms import SignUpForm, LoginForm
 from app import app, db, bcrypt
 from app.models import User, Post
-from flask_login import login_user
+from flask_login import login_user, current_user, logout_user
 
 @app.route('/')
 def index():
@@ -20,6 +20,9 @@ def helpcenter():
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
     form = SignUpForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -32,6 +35,9 @@ def signup():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
@@ -42,10 +48,12 @@ def login():
             flash("Login failed. Please enter the correct details", "danger")
     return render_template("login.html", form=form)
 
-from flask_login import login_user, logout_user, login_required
-
 @app.route('/logout')
-@login_required
 def logout():
     logout_user()
+    flash('Successfully logged out!')
     return redirect(url_for('index'))
+
+@app.route('/myprofile')
+def profile():
+    return redirect(url_for('profile'))
