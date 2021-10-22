@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
 
 body {
     margin: 9;
     background-color: rgba(60,75,106,255);
-    font-family: 'Mukta', sans-serif;
+    font-family: 'Podkova', serif;
     position: relative;
 }
 
@@ -33,8 +34,9 @@ body {
 }
 
 .content {
-    background-color: #E4EAF6;
+    background-color: #273044;
     text-align: left;
+    color: white;
     width: 100%;
     padding: 40px;
     font-size: 20px;
@@ -105,6 +107,7 @@ body {
 
 .profile-fieldset {
     padding: 50px;
+    border-color: white;
     border-radius: 15px;
 }
 
