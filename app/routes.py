@@ -1,22 +1,25 @@
+import os
+import secrets
+from PIL import Image
 from flask import render_template, url_for, redirect, request, flash, Blueprint
-from app.forms import SignUpForm, LoginForm
+from app.forms import SignUpForm, LoginForm, UpdateAccountForm
 from app import app, db, bcrypt
 from app.models import User, Post
 from flask_login import login_user, current_user, logout_user
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', title='Home')
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    return render_template('about.html', title='About')
 
 @app.route('/help')
 def helpcenter():
     if request.method == 'POST':
         return redirect(url_for('helpcenter'))
-    return render_template('TradeQHelpcenter.html')
+    return render_template('TradeQHelpcenter.html', title='Support')
 
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -54,7 +57,34 @@ def logout():
     logout_user()
     flash('Successfully logged out!', 'success')
     return redirect(url_for('index'))
+    
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture.filename)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
 
-@app.route('/myprofile')
+    output_size = (125, 125)
+    i = Image.open(form_picture)
+    i.thumbnail = output_size
+    i.save(picture_path)
+
+    return picture_fn
+
+@app.route('/profile', methods=['GET', 'POST'])
 def profile():
-    return redirect(url_for('profile'))
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        if form.picture.data:
+            picture_file = save_picture(form.picture.data)
+            current_user.image_file = picture_file
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Successfully updated account!', 'success')
+        return redirect(url_for('profile'))
+    elif request.method == 'GET':
+        form.username.data =  current_user.username
+        form.email.data = current_user.email
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('profile.html', title='My Profile', image_file=image_file, form=form)
