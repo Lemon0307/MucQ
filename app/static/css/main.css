@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
 
 body {
-    margin: 9;
+    margin: 5;
     background-color: rgba(60,75,106,255);
     font-family: 'Podkova', serif;
     position: relative;
@@ -21,7 +21,7 @@ body {
 }
 
 .bar:hover {
-    color:#3498DB ;
+    color:white;
 }
 
 .wrapper-2 {
@@ -40,7 +40,7 @@ body {
     width: 100%;
     padding: 40px;
     font-size: 20px;
-    margin-left: 25px;
+    margin-left: 20px;
     border-radius: 15px;
 }
 
@@ -60,15 +60,14 @@ body {
     display: flex;
     width: 100%;
     float: top;
-    background-color: #879BC7;
-    border-radius: 15px;
+    background-color: #8CA1CD;
 }
 
 .top-bar-text {
     text-decoration: none;
     color: black;
     text-align: right;
-    margin-top: 15px;
+    margin-top: 25px;
     margin-bottom: 15px;
     margin-right: 50px;
     margin-left: 50px;
@@ -76,13 +75,14 @@ body {
 }
 
 .top-bar-text:hover {
-    color: #3498DB;
+    color: white;
 }
 
 .name {
     color: white;
     margin-left: 50px;
     text-align: left;
+    justify-content: space-between;
 }
 
 .alert-success {
@@ -105,13 +105,55 @@ body {
     border-radius: 100%;
 }
 
+.profile-pic-post {
+    width: 50px;
+    height: 50px;
+    position:relative;
+    overflow:hidden;
+    border-radius: 100%;
+}
+
 .profile-fieldset {
     padding: 50px;
-    border-color: white;
+    border-color: black;
     border-radius: 15px;
+    background-color: #8CA1CD;
+}
+
+.profile-text {
+    color: black;
+}
+
+.post-fieldset {
+    padding: 25px;
+    border-color: black;
+    background-color: #8CA1CD;
+    border-bottom-width: 1px;
+    border-left-width: 0px;
+    border-right-width: 0px;
+}
+
+.post-text {
+    color: black;
 }
 
 .profile-pic-error {
     text-align: left;
     color: crimson;
+}
+
+.btn {
+    border-width: 0px;
+    border-radius: 20px;
+    padding: 10px;
+    font-family: 'Podkova', serif;
+    font-size: 20px;
+    background-color: #7383A6;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.line-1 {
+    border-color: black;
 }
