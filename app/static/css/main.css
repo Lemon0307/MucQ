@@ -154,6 +154,11 @@ body {
     padding-right: 20px;
 }
 
+.btn-2 {
+    border-width: 0px;
+    background-color: #8CA1CD;
+}
+
 .line-1 {
     border-color: black;
 }
