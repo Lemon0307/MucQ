@@ -10,7 +10,8 @@
 <body>
     <div class="wrapper-1">
             <div class="top-bar">
-                <h1 class="name">TradeQ</h1>
+                    <img class="logo" src="{{ url_for('static', filename='mucq-logo.png') }}">
+                    <h1 class="name">MucQ</h1>
             {% if current_user.is_authenticated %}
                 <a class="top-bar-text" href="{{ url_for('profile') }}" alink="black" vlink="black">{{current_user.username}}</a>
                 <a class="top-bar-text" href="{{ url_for('logout') }}" alink="black" vlink="black">Logout</a>
