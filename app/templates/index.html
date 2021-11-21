@@ -14,12 +14,12 @@
         <br>
         {% for post in posts %}
         <div class="post">
-            <fieldset class="post-fieldset">
+            <div class="post-main">
                 <h2 class="post-text"><a href="{{ url_for('post', post_id=post.id) }}" style="text-decoration: none; color: white; text-shadow: 4px 4px #555555;" alink="white" vlink="white">{{ post.title }}</a></h2>
                 <p class="post-text">{{ post.content }}</p>
                 <img class="profile-pic-post" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" align="left" style="margin-right: 20px;">
                 <a style="text-decoration: none; color: white; text-shadow: 2px 2px #555555;"><small>{{ post.author.username }}    </small></a><small class="post-text">{{ post.date_posted.strftime('(Posted at %Y-%m-%d)') }}</small>
-            </fieldset>
+            </div>
         </div>
         {% endfor %}
 {% endblock %}

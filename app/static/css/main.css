@@ -1,20 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap');
 
 body {
-    margin: 5;
+    margin: 0;
     background-color: rgba(60,75,106,255);
     font-family: 'Podkova', serif;
     position: relative;
 }
 
 .bar {
+    font-family: 'Shippori Antique', sans-serif;
     float: right;
     text-align: center;
-    color: black;
+    color: white;
     text-decoration: none;
-    background-color: #8CA1CD;
     padding: 15px;
     border-radius: 15px;
     font-size: 22px;
@@ -60,12 +61,13 @@ body {
     display: flex;
     width: 100%;
     float: top;
-    background-color: #8CA1CD;
+    background-color: #273044;
 }
 
 .top-bar-text {
+    font-family: 'Shippori Antique', sans-serif;
     text-decoration: none;
-    color: black;
+    color: white;
     text-align: right;
     margin-top: 40px;
     margin-bottom: 15px;
@@ -120,17 +122,20 @@ body {
     color: black;
 }
 
-.post-fieldset {
+.post {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    background-color: #404D6C;
+}
+
+.post-main {
     padding: 25px;
-    border-color: black;
-    background-color: #8CA1CD;
-    border-bottom-width: 1px;
-    border-left-width: 0px;
-    border-right-width: 0px;
+    
 }
 
 .post-text {
-    color: black;
+    color: white;
 }
 
 .profile-pic-error {
@@ -160,6 +165,6 @@ body {
 }
 
 .logo {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
 }
