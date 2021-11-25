@@ -5,7 +5,7 @@
 
 body {
     margin: 0;
-    background-color: rgba(60,75,106,255);
+    background-color: #1B212F; /* rgba(60,75,106,255) */
     font-family: 'Podkova', serif;
     position: relative;
 }
@@ -95,6 +95,14 @@ body {
     font-family: 'Source Code Pro', monospace;
 }
 
+.alert-danger {
+    padding: 20px;
+    background-color: crimson;
+    font-size: 20px;
+    border-radius: 15px;
+    font-family: 'Source Code Pro', monospace;
+}
+
 .profile-pic {
     width: 150px;
     height: 150px;
@@ -111,11 +119,10 @@ body {
     border-radius: 100%;
 }
 
-.profile-fieldset {
+.profile-div {
     padding: 50px;
-    border-color: black;
     border-radius: 15px;
-    background-color: #8CA1CD;
+    background-color: #404D6C;
 }
 
 .profile-text {
@@ -157,7 +164,7 @@ body {
 
 .btn-2 {
     border-width: 0px;
-    background-color: #8CA1CD;
+    background-color: #404D6C;
 }
 
 .line-1 {

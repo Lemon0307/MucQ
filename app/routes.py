@@ -3,9 +3,9 @@ import secrets
 from PIL import Image
 from flask import render_template, url_for, redirect, request, flash, abort
 from flask_login.utils import login_required
-from app.forms import SignUpForm, LoginForm, UpdateAccountForm, PostForm
+from app.forms import SignUpForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
 from app import app, db, bcrypt
-from app.models import User, Post
+from app.models import Comment, User, Post
 from flask_login import login_user, current_user, logout_user
 
 @app.route('/')
@@ -51,7 +51,7 @@ def login():
             flash('Successfully logged in!', 'success')
             return redirect(url_for('index'))
         else:
-            flash("Login failed. Please enter the correct details", "danger")
+            flash("Login failed. Please enter the correct details", 'danger')
     return render_template("login.html", form=form)
 
 @app.route('/logout')
@@ -107,7 +107,7 @@ def create_post():
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
-    return render_template('post.html', title=post.title, post=post, image_file=image_file)
+    return render_template('post.html', post=post, image_file=image_file)
 
 @app.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
 @login_required
@@ -137,3 +137,7 @@ def delete_post(post_id):
     db.session.commit()
     flash('Post successfully deleted!', 'success')
     return redirect(url_for('index'))
+
+@app.route('/reset_password', methods=['GET', 'POST'])
+def reset_request():
+    flash('no')

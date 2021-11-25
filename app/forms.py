@@ -49,3 +49,18 @@ class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])
     submit = SubmitField('Create')
+
+class RequestResetForm(FlaskForm):
+    email = StringField('Email:', validators=[DataRequired(), Email()])
+    submit = SubmitField('Request Password Reset')
+
+    def validate_email(self, email):
+        if email.data != current_user.email:
+            user = User.query.filter_by(email=email.data).first()
+            if user is None:
+                raise ValidationError('The email that you typed is not a MucQ account. Sign Up to create an account')
+
+class ResetPasswordForm(FlaskForm):
+    password = PasswordField('Password:', validators=[DataRequired()])
+    password_confirm = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
+    submit = SubmitField('Reset Password')
