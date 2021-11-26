@@ -16,7 +16,7 @@
                       </form></button>
                 </div>
                 {% endif %}
-                <img class="profile-pic-post" src="{{ image_file }}" align="left" style="margin-right: 20px;">
+                <img class="profile-pic-post" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}" align="left" style="margin-right: 20px;">
                 <a><h3>{{ post.author.username }}</h3></a><small class="post-text">{{ post.date_posted.strftime('(Posted at %Y-%m-%d)') }}</small>
                 <h2 class="post-text">{{ post.title }}</h2>
                 <p class="post-text">{{ post.content }}</p>
