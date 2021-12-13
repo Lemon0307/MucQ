@@ -4,7 +4,7 @@ from PIL import Image
 from flask import render_template, url_for, redirect, request, flash, abort
 from flask_login.utils import login_required
 from app.forms import SignUpForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
-from app import app, db, bcrypt
+from app.__init__ import app, db, bcrypt
 from app.models import User, Post
 from flask_login import login_user, current_user, logout_user
 

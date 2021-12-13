@@ -1,5 +1,4 @@
-from app import app
-import os
+from app.__init__ import app
 
 if __name__ == "__main__":
-    app.run(debug=False, host="localhost", port=8000)
+    app.run(debug=True)
