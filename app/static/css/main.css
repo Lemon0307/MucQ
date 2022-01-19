@@ -3,6 +3,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap');
 
+:root {
+    /* colour palette variables, use these as examples for your css styles */
+    /* will want to migrate existing styles to this palette as soon as possible */
+    --objectYellow: #F2D03B;
+    --objectGreen: #47D9BF;
+    --objectBlue: #003056;
+    --backgroundBlue: #04518C;
+    --highlightBlue: #00A1D9;
+    --textWhite: #FFFFFF;
+    --warningRed: #C90009;
+}
+
 body {
     margin: 0;
     background-color: #1B212F; /* rgba(60,75,106,255) */

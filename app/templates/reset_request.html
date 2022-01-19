@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+<form method="POST" action="">
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    <h1 style="color: #3498db">Reset Password</h1>
+    <div class="form-group">
+      {{ form.email.label(class="form-control-label") }}
+      <br />
+      {% if form.email.errors %} {{ form.email(class="form-control is-invalid")
+      }}
+      <div class="invalid-feedback">
+        {% for errors in form.email.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.email(class="form-control form-control-lg") }} {% endif
+      %}
+    </div>
+  </div>
+  <br />
+  <div class="form-group">{{ form.submit(class="btn") }}</div>
+  <br />
+</form>
+{% endblock %}
