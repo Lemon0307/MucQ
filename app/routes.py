@@ -158,17 +158,16 @@ def delete_post(post_id):
     flash('Post successfully deleted!', 'success')
     return redirect(url_for('index'))
 
-
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Password Reset Request',
-                  sender='mucq.contact@gmail.com', recipients=[user.email])
+                  sender='noreply@mucq.com', recipients=[user.email])
     msg.body = f'''Hello! If you want to reset your password, please click on the following link:
     {url_for('reset_token', token=token, _external=True)}
     
     This is an automated message. If you did not make this request and the email is sent to you by accident, please delete this email immedietely and no changes will apply to the person requesting this email.
     '''
-
+    mail.send(msg)
 
 @app.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
@@ -178,7 +177,7 @@ def reset_request():
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         send_reset_email(user)
-        flash('An email has been sent with instructions on how to reset your password to your email')
+        flash('An email has been sent with instructions on how to reset your password to your email', 'success')
         return redirect(url_for('login'))
     return render_template('reset_request.html', title='Reset Password', form=form)
 
@@ -197,9 +196,9 @@ def reset_token(token):
             form.password.data).decode('utf-8')
         user = User(username=form.username.data,
                     email=form.email.data, password=hashed_password)
-        db.session.add(user)
+        user.password = hashed_password
         db.session.commit()
         flash(
-            f"Account successfully created for {form.username.data}", "success")
+            f"Account password updated for {form.username.data}", "success")
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)

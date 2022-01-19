@@ -69,11 +69,10 @@ class RequestResetForm(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
     def validate_email(self, email):
-        if email.data != current_user.email:
-            user = User.query.filter_by(email=email.data).first()
-            if user is None:
-                raise ValidationError(
-                    'The email that you typed is not a MucQ account. Sign Up to create an account')
+        user = User.query.filter_by(email=email.data).first()
+        if user is None:
+            raise ValidationError(
+                'The email that you typed is not a MucQ account. Sign Up to create an account')
 
 
 class ResetPasswordForm(FlaskForm):
