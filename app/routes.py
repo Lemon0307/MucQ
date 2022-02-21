@@ -1,6 +1,6 @@
 import os
 import secrets
-from PIL import Image
+
 from flask import render_template, url_for, redirect, request, flash, abort
 from flask_login.utils import login_required
 from app.forms import SignUpForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
@@ -161,7 +161,7 @@ def delete_post(post_id):
 def send_reset_email(user):
     token = user.get_reset_token()
     msg = Message('Password Reset Request',
-                  sender='noreply@mucq.com', recipients=[user.email])
+                  sender='mucq.contact@gmail.com', recipients=[user.email])
     msg.body = f'''Hello! If you want to reset your password, please click on the following link:
     {url_for('reset_token', token=token, _external=True)}
     
