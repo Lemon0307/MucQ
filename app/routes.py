@@ -1,6 +1,6 @@
 import os
 import secrets
-
+from PIL import Image
 from flask import render_template, url_for, redirect, request, flash, abort
 from flask_login.utils import login_required
 from app.forms import SignUpForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
@@ -194,11 +194,9 @@ def reset_token(token):
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(
             form.password.data).decode('utf-8')
-        user = User(username=form.username.data,
-                    email=form.email.data, password=hashed_password)
         user.password = hashed_password
         db.session.commit()
         flash(
-            f"Account password updated for {form.username.data}", "success")
+            f"Account password has been successfully updated!", "success")
         return redirect(url_for('login'))
     return render_template('reset_token.html', title='Reset Password', form=form)
