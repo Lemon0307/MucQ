@@ -36,14 +36,14 @@
   <br />
   <div class="form-group">{{ form.submit(class="btn") }}
     <small class="text-muted">
-    <a href="{{ url_for('reset_request') }}">Forgot Password</a>
+    <a href="{{ url_for('users.reset_request') }}">Forgot Password</a>
   </small>
 </div>
   <br />
   
   <small class="text-muted">
     Don't have an account?
-    <a class="ml-2" href="{{ url_for('signup') }}">Create an account</a>
+    <a class="ml-2" href="{{ url_for('users.signup') }}">Create an account</a>
   </small>
 </form>
 {% endblock %}
