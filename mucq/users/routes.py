@@ -1,11 +1,10 @@
 from flask import Blueprint
 from flask import render_template, url_for, redirect, request, flash
-from app.users.forms import SignUpForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm
-from app.__init__ import db, bcrypt
-from app.models import User
+from mucq.users.forms import SignUpForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm
+from mucq.__init__ import db, bcrypt
+from mucq.models import User
 from flask_login import login_user, current_user, logout_user
-from app.users.utils import save_picture, send_reset_email
-
+from mucq.users.utils import save_picture, send_reset_email
 
 users = Blueprint('users', __name__)
 

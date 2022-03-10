@@ -1,9 +1,9 @@
 from flask import Blueprint
 from flask import render_template, url_for, redirect, request, flash, abort
 from flask_login.utils import login_required
-from app.users.forms import PostForm
-from app.__init__ import app, db
-from app.models import Post
+from mucq.users.forms import PostForm
+from mucq.__init__ import db
+from mucq.models import Post
 from flask_login import current_user
 
 posts = Blueprint('posts', __name__)
