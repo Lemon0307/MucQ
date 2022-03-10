@@ -1,7 +1,5 @@
-from flask import render_template, url_for, redirect, request
-from mucq.__init__ import app
+from flask import render_template, url_for, redirect, request, Blueprint
 from mucq.models import Post
-from flask import Blueprint
 
 main = Blueprint('main', __name__)
 

@@ -5,9 +5,6 @@ from datetime import datetime
 from flask import Flask
 from flask_login import LoginManager
 from flask_mail import Mail
-from mucq.users.routes import users
-from mucq.posts.routes import posts
-from mucq.main.routes import main
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
@@ -23,6 +20,10 @@ mail = Mail(app)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
+
+from mucq.users.routes import users
+from mucq.posts.routes import posts
+from mucq.main.routes import main
 
 app.register_blueprint(users)
 app.register_blueprint(posts)

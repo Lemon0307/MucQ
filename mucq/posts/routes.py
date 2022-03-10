@@ -1,5 +1,4 @@
-from flask import Blueprint
-from flask import render_template, url_for, redirect, request, flash, abort
+from flask import render_template, url_for, redirect, request, flash, abort, Blueprint
 from flask_login.utils import login_required
 from mucq.users.forms import PostForm
 from mucq.__init__ import db
