@@ -8,7 +8,7 @@ from flask_login import current_user
 
 posts = Blueprint('posts', __name__)
 
-@app.route('/post/create', methods=['GET', 'POST'])
+@posts.route('/post/create', methods=['GET', 'POST'])
 @login_required
 def create_post():
     form = PostForm()
@@ -22,7 +22,7 @@ def create_post():
     return render_template('create_post.html', title='Create Post', form=form, legend='New Post')
 
 
-@app.route('/post/<int:post_id>')
+@posts.route('/post/<int:post_id>')
 def post(post_id):
     post = Post.query.get_or_404(post_id)
     image_file = url_for(
@@ -30,7 +30,7 @@ def post(post_id):
     return render_template('post.html', post=post, image_file=image_file)
 
 
-@app.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
+@posts.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
     post = Post.query.get_or_404(post_id)
@@ -48,7 +48,7 @@ def update_post(post_id):
         form.content.data = post.content
     return render_template('create_post.html', title='Update Post', form=form, legend='Update Post')
 
-@app.route('/post/<int:post_id>/delete', methods=['POST'])
+@posts.route('/post/<int:post_id>/delete', methods=['POST'])
 @login_required
 def delete_post(post_id):
     post = Post.query.get_or_404(post_id)
