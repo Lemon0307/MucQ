@@ -24,9 +24,11 @@ def create_app(config_class=Config):
     import mucq.main_folder.routes as main
     import mucq.posts_folder.routes as posts
     import mucq.users_folder.routes as users
+    import mucq.errors.handlers as errors
 
     app.register_blueprint(users.users)
     app.register_blueprint(posts.posts)
     app.register_blueprint(main.main)
+    app.register_blueprint(errors.errors)
 
     return app
