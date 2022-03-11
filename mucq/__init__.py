@@ -2,15 +2,15 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from datetime import datetime
-from flask import Flask, current_app
+from flask import Flask
 from flask_login import LoginManager
 from flask_mail import Mail
 from mucq.config import Config
 
-mail = Mail(current_app)
-db = SQLAlchemy(current_app)
-bcrypt = Bcrypt(current_app)
-login_manager = LoginManager(current_app)
+mail = Mail()
+db = SQLAlchemy()
+bcrypt = Bcrypt()
+login_manager = LoginManager()
 
 def create_app(config_class=Config):
     app = Flask(__name__)
@@ -28,3 +28,5 @@ def create_app(config_class=Config):
     app.register_blueprint(users.users)
     app.register_blueprint(posts.posts)
     app.register_blueprint(main.main)
+
+    return app
