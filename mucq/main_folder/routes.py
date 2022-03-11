@@ -1,10 +1,10 @@
 from flask import render_template, url_for, redirect, request, Blueprint
-from mucq.models import Post
 
 main = Blueprint('main', __name__)
 
 @main.route('/')
 def index():
+    from mucq.models import Post
     posts = Post.query.all()
     return render_template('index.html', posts=posts)
 

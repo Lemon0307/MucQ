@@ -3,7 +3,6 @@ from flask_login import current_user
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-import mucq.models
 
 class SignUpForm(FlaskForm):
     username = StringField('Username:', validators=[
@@ -15,12 +14,14 @@ class SignUpForm(FlaskForm):
     submit = SubmitField('Sign Up!')
 
     def validate_username(self, username):
+        import mucq.models
         user = mucq.models.User.query.filter_by(username=username.data).first()
         if user:
             raise ValidationError(
                 'That username is used, please choose another username')
 
     def validate_email(self, email):
+        import mucq.models
         user = mucq.models.User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError(
@@ -43,6 +44,7 @@ class UpdateAccountForm(FlaskForm):
     submit = SubmitField('Update')
 
     def validate_username(self, username):
+        import mucq.models
         if username.data != current_user.username:
             user = mucq.models.User.query.filter_by(username=username.data).first()
             if user:
@@ -50,6 +52,7 @@ class UpdateAccountForm(FlaskForm):
                     'That username is used, please choose another username')
 
     def validate_email(self, email):
+        import mucq.models
         if email.data != current_user.email:
             user = mucq.models.User.query.filter_by(email=email.data).first()
             if user:
@@ -61,6 +64,7 @@ class RequestResetForm(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
     def validate_email(self, email):
+        import mucq.models
         user = mucq.models.User.query.filter_by(email=email.data).first()
         if user is None:
             raise ValidationError(

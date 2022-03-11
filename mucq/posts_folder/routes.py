@@ -1,8 +1,6 @@
 from flask import render_template, url_for, redirect, request, flash, abort, Blueprint
 from flask_login.utils import login_required
 import mucq.posts_folder.forms
-from mucq.__init__ import db
-import mucq.models
 from flask_login import current_user
 
 posts = Blueprint('posts', __name__)
@@ -10,6 +8,8 @@ posts = Blueprint('posts', __name__)
 @posts.route('/post/create', methods=['GET', 'POST'])
 @login_required
 def create_post():
+    from mucq.__init__ import db
+    import mucq.models
     form = mucq.posts_folder.forms.PostForm()
     if form.validate_on_submit():
         post = mucq.models.Post(title=form.title.data,
@@ -23,6 +23,7 @@ def create_post():
 
 @posts.route('/post/<int:post_id>')
 def post(post_id):
+    import mucq.models
     post = mucq.models.Post.query.get_or_404(post_id)
     image_file = url_for(
         'static', filename='profile_pics/' + current_user.image_file)
@@ -32,6 +33,8 @@ def post(post_id):
 @posts.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
+    import mucq.models
+    from mucq.__init__ import db
     post = mucq.models.Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
@@ -50,6 +53,8 @@ def update_post(post_id):
 @posts.route('/post/<int:post_id>/delete', methods=['POST'])
 @login_required
 def delete_post(post_id):
+    import mucq.models
+    from mucq.__init__ import db
     post = mucq.models.Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)

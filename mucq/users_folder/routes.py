@@ -1,7 +1,5 @@
 from flask import render_template, url_for, redirect, request, flash, Blueprint
 from mucq.users_folder.forms import (SignUpForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
-from mucq.__init__ import db, bcrypt
-import mucq.models
 from flask_login import login_user, current_user, logout_user
 from mucq.users_folder.utils import save_picture, send_reset_email
 
@@ -9,6 +7,8 @@ users = Blueprint('users', __name__)
 
 @users.route('/signup', methods=['GET', 'POST'])
 def signup():
+    from mucq.__init__ import db, bcrypt
+    import mucq.models
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
 
@@ -28,6 +28,8 @@ def signup():
 
 @users.route('/login', methods=['GET', 'POST'])
 def login():
+    import mucq.models
+    from mucq.__init__ import bcrypt
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
 
@@ -51,6 +53,7 @@ def logout():
 
 @users.route('/profile', methods=['GET', 'POST'])
 def profile():
+    from mucq.__init__ import db
     form = UpdateAccountForm()
     if form.validate_on_submit():
         if form.picture.data:
@@ -70,6 +73,7 @@ def profile():
 
 @users.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
+    import mucq.models
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
     form = RequestResetForm()
@@ -83,6 +87,8 @@ def reset_request():
 
 @users.route('/reset_password/<token>', methods=['GET', 'POST'])
 def reset_token(token):
+    import mucq.models
+    from mucq.__init__ import db, bcrypt
     if current_user.is_authenticated:
         return redirect(url_for('main.index'))
     user = mucq.models.User.verify_reset_token(token)

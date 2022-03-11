@@ -2,10 +2,10 @@ import os
 import secrets
 from PIL import Image
 from flask import url_for
-from mucq.__init__ import app, mail
 from flask_mail import Message
 
 def save_picture(form_picture):
+    from mucq.__init__ import app
     random_hex = secrets.token_hex(8)
     _, f_ext = os.path.splitext(form_picture.filename)
     picture_fn = random_hex + f_ext
@@ -20,6 +20,7 @@ def save_picture(form_picture):
     return picture_fn
 
 def send_reset_email(user):
+    from mucq.__init__ import mail
     token = user.get_reset_token()
     msg = Message('Password Reset Request',
                   sender='mucq.contact@gmail.com', recipients=[user.email])
