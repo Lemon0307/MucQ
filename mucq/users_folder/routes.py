@@ -1,6 +1,6 @@
 from flask import render_template, url_for, redirect, request, flash, Blueprint
 from mucq.users_folder.forms import (SignUpForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
-from flask_login import login_user, current_user, logout_user
+from flask_login import login_required, login_user, current_user, logout_user
 from mucq.users_folder.utils import save_picture, send_reset_email
 
 users = Blueprint('users', __name__)
@@ -51,6 +51,7 @@ def logout():
     flash('Successfully logged out!', 'success')
     return redirect(url_for('main.index'))
 
+@login_required
 @users.route('/profile', methods=['GET', 'POST'])
 def profile():
     from mucq.__init__ import db

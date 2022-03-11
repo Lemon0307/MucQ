@@ -2,29 +2,29 @@ import os
 from flask_sqlalchemy import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from datetime import datetime
-from flask import Flask
+from flask import Flask, current_app
 from flask_login import LoginManager
 from flask_mail import Mail
+from mucq.config import Config
 
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
-app.config['SECRET_KEY'] = '188db0c1a734f4d4d31f26f6c0ef5562d7aa4910caeb09b2bd402a25edba2d51b4000e2245f818c9e1216cb62e3e98761ebbaac40510ce4608213ef327e32e12322f02e423'
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
-app.config['MAIL_DEBUG'] = True
-app.config['MAIL_USERNAME'] = 'mucq.contact@gmail.com'
-app.config['MAIL_PASSWORD'] = 'sussyimposter'
-mail = Mail(app)
-db = SQLAlchemy(app)
-bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
+mail = Mail(current_app)
+db = SQLAlchemy(current_app)
+bcrypt = Bcrypt(current_app)
+login_manager = LoginManager(current_app)
 
-import mucq.main_folder.routes as main
-import mucq.posts_folder.routes as posts
-import mucq.users_folder.routes as users
+def create_app(config_class=Config):
+    app = Flask(__name__)
+    app.config.from_object(Config)
 
-app.register_blueprint(users.users)
-app.register_blueprint(posts.posts)
-app.register_blueprint(main.main)
+    mail.init_app(app)
+    db.init_app(app)
+    bcrypt.init_app(app)
+    login_manager.init_app(app)
+    
+    import mucq.main_folder.routes as main
+    import mucq.posts_folder.routes as posts
+    import mucq.users_folder.routes as users
+
+    app.register_blueprint(users.users)
+    app.register_blueprint(posts.posts)
+    app.register_blueprint(main.main)
