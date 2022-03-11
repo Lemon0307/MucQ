@@ -1,3 +1,4 @@
+import re
 from flask import render_template, url_for, redirect, request, flash, abort, Blueprint
 from flask_login.utils import login_required
 import mucq.posts_folder.forms
@@ -60,4 +61,3 @@ def delete_post(post_id):
     db.session.commit()
     flash('Post successfully deleted!', 'success')
     return redirect(url_for('main.index'))
-
