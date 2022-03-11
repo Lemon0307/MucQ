@@ -5,14 +5,12 @@ main = Blueprint('main', __name__)
 @main.route('/')
 def index():
     from mucq.models import Post
-    posts = Post.query.all()
+    posts = Post.query.order_by(Post.date_posted.desc())
     return render_template('index.html', posts=posts)
-
 
 @main.route('/about')
 def about():
     return render_template('about.html', title='About')
-
 
 @main.route('/help')
 def helpcenter():
