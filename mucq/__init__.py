@@ -21,10 +21,10 @@ db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager(app)
 
-from mucq.users.routes import users
-from mucq.posts.routes import posts
-from mucq.main.routes import main
+import mucq.main_folder.routes as main
+import mucq.posts_folder.routes as posts
+import mucq.users_folder.routes as users
 
-app.register_blueprint(users)
-app.register_blueprint(posts)
-app.register_blueprint(main)
+app.register_blueprint(users.users)
+app.register_blueprint(posts.posts)
+app.register_blueprint(main.main)

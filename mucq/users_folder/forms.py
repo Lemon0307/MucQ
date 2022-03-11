@@ -3,7 +3,7 @@ from flask_login import current_user
 from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
-from mucq.models import User
+import mucq.models
 
 class SignUpForm(FlaskForm):
     username = StringField('Username:', validators=[
@@ -15,13 +15,13 @@ class SignUpForm(FlaskForm):
     submit = SubmitField('Sign Up!')
 
     def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
+        user = mucq.models.User.query.filter_by(username=username.data).first()
         if user:
             raise ValidationError(
                 'That username is used, please choose another username')
 
     def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
+        user = mucq.models.User.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError(
                 'There is already an account using this email')
@@ -44,14 +44,14 @@ class UpdateAccountForm(FlaskForm):
 
     def validate_username(self, username):
         if username.data != current_user.username:
-            user = User.query.filter_by(username=username.data).first()
+            user = mucq.models.User.query.filter_by(username=username.data).first()
             if user:
                 raise ValidationError(
                     'That username is used, please choose another username')
 
     def validate_email(self, email):
         if email.data != current_user.email:
-            user = User.query.filter_by(email=email.data).first()
+            user = mucq.models.User.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError(
                     'There is already an account using this email')
@@ -61,7 +61,7 @@ class RequestResetForm(FlaskForm):
     submit = SubmitField('Request Password Reset')
 
     def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
+        user = mucq.models.User.query.filter_by(email=email.data).first()
         if user is None:
             raise ValidationError(
                 'The email that you typed is not a MucQ account. Sign Up to create an account')

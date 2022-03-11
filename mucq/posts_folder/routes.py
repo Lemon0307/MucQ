@@ -1,8 +1,8 @@
 from flask import render_template, url_for, redirect, request, flash, abort, Blueprint
 from flask_login.utils import login_required
-from mucq.users.forms import PostForm
+import mucq.posts_folder.forms
 from mucq.__init__ import db
-from mucq.models import Post
+import mucq.models
 from flask_login import current_user
 
 posts = Blueprint('posts', __name__)
@@ -10,9 +10,9 @@ posts = Blueprint('posts', __name__)
 @posts.route('/post/create', methods=['GET', 'POST'])
 @login_required
 def create_post():
-    form = PostForm()
+    form = mucq.posts_folder.forms.PostForm()
     if form.validate_on_submit():
-        post = Post(title=form.title.data,
+        post = mucq.models.Post(title=form.title.data,
                     content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
@@ -23,7 +23,7 @@ def create_post():
 
 @posts.route('/post/<int:post_id>')
 def post(post_id):
-    post = Post.query.get_or_404(post_id)
+    post = mucq.models.Post.query.get_or_404(post_id)
     image_file = url_for(
         'static', filename='profile_pics/' + current_user.image_file)
     return render_template('post.html', post=post, image_file=image_file)
@@ -32,10 +32,10 @@ def post(post_id):
 @posts.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
 @login_required
 def update_post(post_id):
-    post = Post.query.get_or_404(post_id)
+    post = mucq.models.Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
-    form = PostForm()
+    form = mucq.posts_folder.forms.PostForm()
     if form.validate_on_submit():
         post.title = form.title.data
         post.content = form.content.data
@@ -50,7 +50,7 @@ def update_post(post_id):
 @posts.route('/post/<int:post_id>/delete', methods=['POST'])
 @login_required
 def delete_post(post_id):
-    post = Post.query.get_or_404(post_id)
+    post = mucq.models.Post.query.get_or_404(post_id)
     if post.author != current_user:
         abort(403)
     db.session.delete(post)
