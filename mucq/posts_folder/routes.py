@@ -6,22 +6,6 @@ from flask_login import current_user
 
 posts = Blueprint('posts', __name__)
 
-@posts.route('/post/create', methods=['GET', 'POST'])
-@login_required
-def create_post():
-    from mucq.__init__ import db
-    import mucq.models
-    form = mucq.posts_folder.forms.PostForm()
-    if form.validate_on_submit():
-        post = mucq.models.Post(title=form.title.data,
-                    content=form.content.data, author=current_user)
-        db.session.add(post)
-        db.session.commit()
-        flash('Your post has been created!', 'success')
-        return redirect(url_for('main.index'))
-    return render_template('create_post.html', title='Create Post', form=form, legend='New Post')
-
-
 @posts.route('/post/<int:post_id>')
 def post(post_id):
     import mucq.models
