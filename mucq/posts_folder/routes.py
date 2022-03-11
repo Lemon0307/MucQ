@@ -25,9 +25,7 @@ def create_post():
 def post(post_id):
     import mucq.models
     post = mucq.models.Post.query.get_or_404(post_id)
-    image_file = url_for(
-        'static', filename='profile_pics/' + current_user.image_file)
-    return render_template('post.html', post=post, image_file=image_file)
+    return render_template('post.html', post=post)
 
 
 @posts.route('/post/<int:post_id>/update', methods=['GET', 'POST'])

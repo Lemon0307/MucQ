@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, redirect, url_for, flash
 
 errors = Blueprint('errors', __name__)
  
@@ -13,3 +13,8 @@ def error_403(error):
 @errors.app_errorhandler(500)
 def error_500(error):
     return render_template('errors/500.html'), 500
+
+@errors.app_errorhandler(401)
+def error_401(error):
+        flash('You are not logged in yet!', 'danger')
+        return redirect(url_for('users.login')), 401
