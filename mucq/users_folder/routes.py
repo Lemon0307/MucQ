@@ -52,8 +52,14 @@ def logout():
     return redirect(url_for('main.index'))
 
 @login_required
-@users.route('/profile', methods=['GET', 'POST'])
+@users.route('/profile')
 def profile():
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('profile.html', title='My Profile', image_file=image_file)
+
+@login_required
+@users.route('/update_profile', methods=['GET', 'POST'])
+def update_profile():
     from mucq.__init__ import db
     form = UpdateAccountForm()
     if form.validate_on_submit():
@@ -68,9 +74,8 @@ def profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
-    image_file = url_for(
-        'static', filename='profile_pics/' + current_user.image_file)
-    return render_template('profile.html', title='My Profile', image_file=image_file, form=form)
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('update_profile.html', title='Update Profile', image_file=image_file, form=form)
 
 @users.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():

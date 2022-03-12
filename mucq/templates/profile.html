@@ -11,57 +11,8 @@
         <img class="profile-pic" src="{{ image_file }}" align="left" style="margin-right: 30px;">
     <h2 class="user-label-profile" style="text-decoration: none; color: white; text-shadow: 4px 4px #555555;">{{ current_user.username }}</h2>
     <p class="user-label-profile profile-text">{{ current_user.email }}</p>
-    <br><br><br><br><br>
-    <form method="POST" action="", enctype="multipart/form-data">
-            {{ form.hidden_tag() }}
-            <div class="form-group profile-text">
-                <h1 style="text-decoration: none; color: white; text-shadow: 4px 4px #555555;">Update Account</h1>
-                <div class="form-group">
-                    {{ form.username.label(class="form-control-label profile-text") }}
-                    <br>
-                    {% if form.username.errors %}
-                        {{ form.username(class="form-control is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for errors in form.username.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.username(class="form-control profile-text") }}
-                    {% endif %}
-                </div>
-                <div class="form-group">
-                    {{ form.email.label(class="form-control-label profile-text") }}
-                    <br>
-                    {% if form.email.errors %}
-                    {{ form.email(class="form-control is-invalid profile-text") }}
-                    <div class="invalid-feedback">
-                        {% for errors in form.email.errors %}
-                            <span>{{ error }}</span>
-                        {% endfor %}
-                    </div>
-                {% else %}
-                    {{ form.email(class="form-control profile-text") }}
-                {% endif %}
-                </div>
-            </div>
-            <br>
-            <div class="form-group" style="color: white">
-                {{ form.picture.label() }}
-                <br>
-                {{ form.picture() }}
-                {% if form.picture.errors %}
-                    {% for error in form.picture.errors %}
-                    <br>
-                        <span class="profile-pic-error">{{ error }}</span><br>
-                    {% endfor %}  
-                {% endif %}
-            </div>
-            <br>
-            <div class="form-group">
-                {{ form.submit(class="btn btn-outline-info") }}
-            </div>
-        </form>
-    </div>
-        
+    <br>
+    <button class="btn"><form action="{{ url_for('users.update_profile') }}" method="POST">
+        <input class="btn" type="submit" value="Update Profile">
+      </form></button>
 {% endblock %}

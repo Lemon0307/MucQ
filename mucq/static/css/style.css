@@ -220,6 +220,7 @@ nav {
 
 textarea {
     resize: none;
+    color: black;
     background-color: #F4F4F4;
     border: none;
     border-radius: 5px;
@@ -255,5 +256,20 @@ textarea {
     #menu {
         overflow: hidden;
         transition: 0.5s;
+    }
+
+    .profile-text {
+        font-size: 15px;
+        text-align: left;
+        text-size-adjust: auto;
+    } 
+
+    textarea {
+        width: 100%;
+    }
+
+    .profile-pic {
+        width: 50px;
+        height: 50px;
     }
 }

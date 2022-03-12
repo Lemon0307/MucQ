@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {%block head %} {% endblock %}
+{% block body %}
+<form method="POST" action="", enctype="multipart/form-data">
+    {{ form.hidden_tag() }}
+    <div class="form-group profile-text">
+        <h1 style="text-decoration: none; color: white; text-shadow: 4px 4px #555555;">Update Account</h1>
+        <div class="form-group">
+            {{ form.username.label(class="form-control-label profile-text") }}
+            <br>
+            {% if form.username.errors %}
+                {{ form.username(class="form-control is-invalid") }}
+                <div class="invalid-feedback">
+                    {% for errors in form.username.errors %}
+                        <span>{{ error }}</span>
+                    {% endfor %}
+                </div>
+            {% else %}
+                {{ form.username(class="form-control profile-text") }}
+            {% endif %}
+        </div>
+        <div class="form-group">
+            {{ form.email.label(class="form-control-label profile-text") }}
+            <br>
+            {% if form.email.errors %}
+            {{ form.email(class="form-control is-invalid profile-text") }}
+            <div class="invalid-feedback">
+                {% for errors in form.email.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            {{ form.email(class="form-control profile-text") }}
+        {% endif %}
+        </div>
+    </div>
+    <br>
+    <div class="form-group" style="color: white">
+        {{ form.picture.label() }}
+        <br>
+        {{ form.picture() }}
+        {% if form.picture.errors %}
+            {% for error in form.picture.errors %}
+            <br>
+                <span class="profile-pic-error">{{ error }}</span><br>
+            {% endfor %}  
+        {% endif %}
+    </div>
+    <br>
+    <div class="form-group">
+        {{ form.submit(class="btn btn-outline-info") }}
+    </div>
+</form>
+</div>
+{% endblock %}

@@ -24,7 +24,7 @@ def send_reset_email(user):
     msg = Message('Password Reset Request',
                   sender='mucq.contact@gmail.com', recipients=[user.email])
     msg.body = f'''Hello! If you want to reset your password, please click on the following link:
-    {url_for('reset_token', token=token, _external=True)}
+    {url_for('users.reset_token', token=token, _external=True)}
     
     This is an automated message. If you did not make this request and the email is sent to you by accident, please delete this email immedietely and no changes will apply to the person requesting this email.
     '''
