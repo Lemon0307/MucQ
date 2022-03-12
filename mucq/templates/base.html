@@ -13,11 +13,16 @@
   <body>
     <div class="container">
       <div class="navbar" id="navbar">
-        <img class="logo" src="{{ url_for('static', filename='mucq-logo.png') }}"/>
+        <div class="logo-wrapped">
+          <img class="logo" src="{{ url_for('static', filename='mucq-logo.png') }}"/>
+          <a class="logo-text" href="{{ url_for('main.index') }}">MucQ</a>
+        </div>
+        
+      
         <nav>
           <ul>
             {% if current_user.is_authenticated %}
-        <li><a class="navbar-text" href="{{ url_for('users.profile') }}" alink="black" vlink="black">{{current_user.username}}</a></li>
+        <li><a class="navbar-text" href="{{ url_for('users.profile') }}"><img class="profile-navbar" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}"></a></li>
           <li><a class="navbar-text" href="{{ url_for('users.logout') }}" alink="black" vlink="black">Logout</a></li>
         {% else %}
         <li><a class="navbar-text" href="{{ url_for('users.login') }}" alink="black" vlink="black">Login</a></li>

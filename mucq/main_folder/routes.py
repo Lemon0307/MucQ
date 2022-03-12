@@ -6,6 +6,7 @@ main = Blueprint('main', __name__)
 @main.route('/', methods=['GET', 'POST'])
 def index():
     from mucq.models import Post
+    import mucq.posts_folder.forms
     posts = Post.query.order_by(Post.date_posted.desc())
     from mucq.__init__ import db
     import mucq.models
@@ -30,3 +31,7 @@ def helpcenter():
     if request.method == 'POST':
         return redirect(url_for('helpcenter'))
     return render_template('TradeQHelpcenter.html', title='Support')
+
+@main.route('/terms-of-service')
+def tos():
+    return render_template('tos.html', title='Terms of Service')

@@ -49,6 +49,17 @@ body {
     margin: 30px 0;
 }
 
+.logo-wrapped {
+    align-items: center;
+    display: flex;
+}
+
+.logo-text {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+
 .nav-button {
     cursor: pointer;
     width: 30px;
@@ -67,6 +78,7 @@ nav {
     flex: 1;
     text-align: right;
 }
+
 .menubar ul li {
     list-style: none;
     display: inline-block;
@@ -89,6 +101,7 @@ nav {
     list-style: none;
     display: inline-block;
     margin-right: 30px;
+    align-items: center;
 }
 
 /* content */
@@ -115,13 +128,16 @@ nav {
 .alert-danger {
     padding: 20px;
     background-color: crimson;
+    margin: 10px 10px;
+    padding: 20px 20px;
     font-size: 20px;
     border-radius: 15px;
     font-family: 'Source Code Pro', monospace;
 }
 
 .alert-success {
-    padding: 20px;
+    padding: 20px 20px;
+    margin: 10px 10px;
     background-color: #66D622;
     font-size: 20px;
     border-radius: 15px;
@@ -133,6 +149,13 @@ nav {
     height: 150px;
     position:relative;
     overflow:hidden;
+    border-radius: 100%;
+}
+
+.profile-navbar {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
     border-radius: 100%;
 }
 
@@ -188,7 +211,7 @@ nav {
 
 .btn-2 {
     border-width: 0px;
-    background-color: #404D6C;
+    background-color: #22314F;
 }
 
 .line-1 {

@@ -63,10 +63,12 @@
         "
         alink="white"
         vlink="white"
-        >{{ post.title }}</a
+        >Title: </a>{{ post.title }}</a
       >
     </h2>
+    <br>
     <p class="post-text">{{ post.content }}</p>
+    <br>
     <img
       class="profile-pic-post"
       src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
