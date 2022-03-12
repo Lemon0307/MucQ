@@ -6,9 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/main.css') }}"
+      href="{{ url_for('static', filename='css/style.css') }}"
     />
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block head %}{% endblock %}
   </head>
   <body>
@@ -28,7 +27,15 @@
         </nav>
         <img src="{{ url_for('static', filename='menu.jpg') }}" class="nav-button" onclick="togglemenu()">
       </div>
-      
+    </div>
+    <div class="menu" >
+      <nav class="menubar" >
+        <ul id="menu">
+          <li><a class="#" href="{{ url_for('main.index') }}" alink="black" vlink="black">Home</a></li>
+          <li><a class="#" href="{{ url_for('main.about') }}" alink="black" vlink="black">About</a></li>
+          <li><a class="#" href="{{ url_for('main.helpcenter') }}" alink="black" vlink="black">Support</a></li>
+        </ul>
+      </nav>
     </div>
     <br />
     {% with messages = get_flashed_messages(with_categories=true) %} {% if
@@ -36,13 +43,21 @@
     <div class="alert-{{ category }}">{{ message }}</div>
     <br />
     {% endfor %} {% endif %} {% endwith %}
-    <div class="wrapper-2">
-      <div class="sidebar">
-        <li><a class="sidebar" href="{{ url_for('main.index') }}" alink="black" vlink="black">Home</a></li>
-            <li><a class="sidebar" href="{{ url_for('main.about') }}" alink="black" vlink="black">About</a></li>
-            <li><a class="sidebar" href="{{ url_for('main.helpcenter') }}" alink="black" vlink="black">Support</a></li>
-      </div>
-    </div>
+    
     <div class="content">{% block body %}{% endblock %}</div>
+    <script>
+      var menuList = document.getElementById('menu');
+
+      menuList.style.maxHeight = "0px";
+
+      function togglemenu() {
+        if (menuList.style.maxHeight == "0px") {
+          menuList.style.maxHeight = "130px";
+        }
+        else {
+          menuList.style.maxHeight = "0px";
+        }
+      }
+    </script>
   </body>
 </html>

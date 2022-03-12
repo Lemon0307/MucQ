@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, request, Blueprint, flash
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 main = Blueprint('main', __name__)
 
@@ -11,12 +11,15 @@ def index():
     import mucq.models
     form = mucq.posts_folder.forms.PostForm()
     if form.validate_on_submit():
+        
         post = mucq.models.Post(title=form.title.data,
                     content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
+
     return render_template('index.html', posts=posts, form=form)
+    
 
 @main.route('/about')
 def about():

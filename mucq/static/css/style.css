@@ -15,56 +15,45 @@
     --warningRed: #C90009;
 }
 
-body {
-    margin: 0;
-    background-color: #1B212F; /* rgba(60,75,106,255) */
-    font-family: 'Podkova', serif;
-    position: relative;
-}
+/* navbar */
 
-input {
-    resize: none;
-    background-color: #F4F4F4;
-    border: none;
-    border-radius: 5px;
-
-}
-
-textarea {
-    resize: none;
-    background-color: #F4F4F4;
-    border: none;
-    border-radius: 5px;
-    width: 50%;
-    height: 100px;
-}
-
-.bar {
-    font-family: 'Shippori Antique', sans-serif;
-    float: left;
-    text-align: left;
-    color: white;
-    text-decoration: none;
-    padding: 15px;
-    margin-left: 10px;
-    margin-right: 10px;
-    border-radius: 15px;
-    font-size: 22px;
-}
-
-.bar:hover {
-    color: grey;
-}
-
-.wrapper-2 {
-    display: flex;
+* {
+    margin: 0px;
     padding: 0px;
+    font-family: 'Podkova', serif;
 }
 
-.wrapper-1 {
-    overflow: hidden;
-    min-height: 100px;
+body {
+    background-color: #162135;
+}
+.container {
     width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.navbar {
+    width: 100%;
+    max-height: 100px;
+    display: flex;
+    cursor: pointer;
+    margin: 5px 0;
+    align-items: center;
+}
+
+.logo {
+    width: 50px;
+    cursor: pointer;
+    margin: 30px 0;
+}
+
+.nav-button {
+    cursor: pointer;
+    width: 30px;
+    display: none;
+
 }
 
 .nav-button div {
@@ -73,66 +62,46 @@ textarea {
     margin: 5px 0;
     border-radius: 25px;
 }
-.nav-button div:hover {
-    background-color: grey;
-}
 
-.nav-button {
-    width: 30px;
-    display: block;
-    margin: 1em 1em 0 0;
-}
-
-.top-bar {
-    width: 100%;
-    display: flex;
-    text-align: right;
+nav {
     flex: 1;
-    background-color: #273044;
+    text-align: right;
+}
+.menubar ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 30px;
 }
 
-.top-bar-text {
-    font-family: 'Shippori Antique', sans-serif;
+.menubar ul li a {
     text-decoration: none;
     color: white;
-    display: inline-block;
-    margin: 50px;
-    font-size: 25px;
+    font-size: 20px;
 }
 
-
-.top-bar-text:hover {
-    color: grey;
-}
-
-.name {
+.navbar ul li a {
+    text-decoration: none;
     color: white;
-    text-align: left;
-    justify-content: space-between;
-    width: 50px;
-    cursor: pointer;
-    margin: 50px 0;
+    font-size: 20px;
 }
 
-.logo {
-    width: 80px;
-    height: 80px;
-    cursor: pointer;
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 30px;
 }
+
+/* content */
 
 .content {
-    background-color: #404D6C;
+    background-color: #2C4269;
     color: white;
-    width: 100%;
     padding: 40px;
     font-size: 20px;
-    margin-left: 20px;
+    margin: 20px 20px;
     border-radius: 15px;
-    align-items: center;
-}
-
-.form-group {
-    text-align: left;
+    overflow: hidden;
+    flex: 1;
 }
 
 .form-control {
@@ -178,7 +147,6 @@ textarea {
 .profile-div {
     padding: 50px;
     border-radius: 15px;
-    background-color: #404D6C;
 }
 
 .profile-text {
@@ -186,10 +154,10 @@ textarea {
 }
 
 .post {
+    background-color: #22314F;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 15px;
-    background-color: #404D6C;
 }
 
 .post-main {
@@ -212,7 +180,7 @@ textarea {
     padding: 10px;
     font-family: 'Podkova', serif;
     font-size: 20px;
-    background-color: #7383A6;
+    background-color: #22314F;
     color: white;
     padding-left: 20px;
     padding-right: 20px;
@@ -220,11 +188,49 @@ textarea {
 
 .btn-2 {
     border-width: 0px;
+    background-color: #404D6C;
 }
 
 .line-1 {
     border-color: black;
 }
 
+textarea {
+    resize: none;
+    background-color: #F4F4F4;
+    border: none;
+    border-radius: 5px;
+    width: 50%;
+    height: 100px;
+}
+
 @media only screen and (max-width:700px) {
+
+    .menubar ul {
+        width: 100%;
+        background: #22314F;
+        padding: 8px 8px;
+        position: absolute;
+        top: 99px;
+        right: 0;
+        z-index: 2;
+    }
+
+    .menubar ul li {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .menubar ul li a {
+        color: white;
+    }
+
+    .nav-button {
+        display: block;
+    }
+
+    #menu {
+        overflow: hidden;
+        transition: 0.5s;
+    }
 }

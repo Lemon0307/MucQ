@@ -1,7 +1,6 @@
 import re
 from flask import render_template, url_for, redirect, request, flash, abort, Blueprint
 from flask_login.utils import login_required
-import mucq.posts_folder.forms
 from flask_login import current_user
 
 posts = Blueprint('posts', __name__)
