@@ -7,12 +7,12 @@ main = Blueprint('main', __name__)
 def index():
     from mucq.models import Post
     import mucq.posts_folder.forms
-    posts = Post.query.order_by(Post.date_posted.desc())
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=7)
     from mucq.__init__ import db
     import mucq.models
     form = mucq.posts_folder.forms.PostForm()
     if form.validate_on_submit():
-        
         post = mucq.models.Post(title=form.title.data,
                     content=form.content.data, author=current_user)
         db.session.add(post)
