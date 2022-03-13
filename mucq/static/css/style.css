@@ -133,6 +133,7 @@ nav {
     font-size: 20px;
     border-radius: 15px;
     font-family: 'Source Code Pro', monospace;
+    align-items: center;
 }
 
 .alert-success {
@@ -142,6 +143,7 @@ nav {
     font-size: 20px;
     border-radius: 15px;
     font-family: 'Source Code Pro', monospace;
+    align-items: center;
 }
 
 .profile-pic {
@@ -190,6 +192,7 @@ nav {
 
 .post-text {
     color: white;
+    overflow: hidden;
 }
 
 .profile-pic-error {
