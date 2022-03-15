@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Podkova&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap');
 
 :root {
     /* colour palette variables, use these as examples for your css styles */
@@ -92,10 +93,18 @@ nav {
     font-size: 20px;
 }
 
+.menubar ul li a:hover {
+    color: grey;
+}
+
 .navbar ul li a {
     text-decoration: none;
     color: white;
     font-size: 20px;
+}
+
+.navbar ul li a:hover {
+    color: grey;
 }
 
 .navbar ul li {
@@ -276,4 +285,22 @@ textarea {
         width: 50px;
         height: 50px;
     }
+}
+
+.eng_button {
+    text-decoration: none;
+    color: white;
+}
+
+.eng_button:hover {
+    color: grey;
+}
+
+.chi_button {
+    text-decoration: none;
+    color: white;
+}
+
+.chi_button:hover {
+    color: grey;
 }

@@ -1,19 +1,19 @@
 {% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
-<h1 class="title" style="color: #3498db">Home</h1>
-<h1>Welcome to MucQ!</h1>
-
+<h1 class="title" id="home" style="color: #3498db">Home</h1>
+<h1 id="mucq_welcome" class="mucq_welcome" lang="zh-Hant">Welcome to MucQ!</h1>
 <br>
-<p>
+<p id="mucq_welcome_message" class="mucq_welcome_message" lang="zh-Hant">
   Welcome to MucQ! See what's new!
 </p>
 <br>
+{% if current_user.is_authenticated %}
 <div id="create_post">
   <form method="POST" action="">
     {{ form.hidden_tag() }}
     <div class="form-group">
         <h1 style="color: #3498DB">{{ legend }}</h1>
         <div class="form-group">
-            {{ form.title.label(class="form-control-label") }}
+            {{ form.title.label(class="form-control-label", id="create_post_title") }}
             <br>
             {% if form.title.errors %}
             {{ form.title(class="form-control is-invalid") }}
@@ -27,7 +27,7 @@
         {% endif %}
         </div>
         <div class="form-group">
-            {{ form.content.label(class="form-control-label") }}
+            {{ form.content.label(class="form-control-label", id="create_post_content") }}
             <br>
             {% if form.content.errors %}
             {{ form.content(class="form-control is-invalid") }}
@@ -48,6 +48,9 @@
     <br>
 </form>
 </div>
+{% else %}
+<h2 id="log-in-reminder" style="color: #7383a6; text-align: center;">You will have to log in to join the conversation!</h2>
+{% endif %}
 <br />
 <br />
 {% for post in posts.items %}
@@ -94,5 +97,5 @@
 ...
 {% endif %}
 {% endfor %}
-<h2 style="text-align: center; color: #7383a6">You're all caught up!</h2>
+<h2 style="text-align: center; color: #7383a6" id="all-caught-up">You're all caught up!</h2>
 {% endblock %}

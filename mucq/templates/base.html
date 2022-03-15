@@ -12,6 +12,8 @@
   </head>
   <body>
     <div class="container">
+      <a id="eng-button" language="english" class="eng_button" href="#eng" data-reload>English</a>
+      <a id="chi-button" language="t_chinese" class="chi_button" href="#chi" data-reload>繁體中文</a>
       <div class="navbar" id="navbar">
         <div class="logo-wrapped">
           <img class="logo" src="{{ url_for('static', filename='mucq-logo.png') }}"/>
@@ -22,11 +24,13 @@
         <nav>
           <ul>
             {% if current_user.is_authenticated %}
-        <li><a class="navbar-text" href="{{ url_for('users.profile') }}"><img class="profile-navbar" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}"></a></li>
-          <li><a class="navbar-text" href="{{ url_for('users.logout') }}" alink="black" vlink="black">Logout</a></li>
+            <li><a class="navbar-text" href="{{ url_for('users.profile') }}"><img class="profile-navbar" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}"></a></li>
+            <li><a class="navbar-text" href="{{ url_for('users.logout') }}" alink="black" vlink="black">Logout</a></li>
+          
         {% else %}
-        <li><a class="navbar-text" href="{{ url_for('users.login') }}" alink="black" vlink="black">Login</a></li>
-          <li><a class="navbar-text" href="{{ url_for('users.signup') }}" alink="black" vlink="black">Sign Up</a></li>
+            <li><a class="navbar-text" href="{{ url_for('users.login') }}" alink="black" vlink="black">Login</a></li>
+            <li><a class="navbar-text" href="{{ url_for('users.signup') }}" alink="black" vlink="black">Sign Up</a></li>
+          
         {% endif %}
           </ul>
         </nav>
@@ -36,9 +40,10 @@
     <div class="menu" >
       <nav class="menubar" >
         <ul id="menu">
-          <li><a class="#" href="{{ url_for('main.index') }}" alink="black" vlink="black">Home</a></li>
-          <li><a class="#" href="{{ url_for('main.about') }}" alink="black" vlink="black">About</a></li>
-          <li><a class="#" href="{{ url_for('main.helpcenter') }}" alink="black" vlink="black">Support</a></li>
+          <li><a class="#" id="menu_home" href="{{ url_for('main.index') }}" alink="black" vlink="black">Home</a></li>
+          <li><a class="#" id="menu_about" href="{{ url_for('main.about') }}" alink="black" vlink="black">About</a></li>
+          <li><a class="#" id="menu_support" href="{{ url_for('main.helpcenter') }}" alink="black" vlink="black">Support</a></li>
+          
         </ul>
       </nav>
     </div>
@@ -49,20 +54,12 @@
     <br />
     {% endfor %} {% endif %} {% endwith %}
     
-    <div class="content">{% block body %}{% endblock %}</div>
-    <script>
-      var menuList = document.getElementById('menu');
-
-      menuList.style.maxHeight = "0px";
-
-      function togglemenu() {
-        if (menuList.style.maxHeight == "0px") {
-          menuList.style.maxHeight = "130px";
-        }
-        else {
-          menuList.style.maxHeight = "0px";
-        }
-      }
-    </script>
+    <div class="content">{% block body %}{% endblock %}
+      <br>
+      <div class="footer">
+        <h3>Copyright &copy; MucQ Cooperation</h3>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   </body>
 </html>
