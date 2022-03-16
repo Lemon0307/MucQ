@@ -28,8 +28,8 @@
             <li><a class="navbar-text" href="{{ url_for('users.logout') }}" alink="black" vlink="black">Logout</a></li>
           
         {% else %}
-            <li><a class="navbar-text" href="{{ url_for('users.login') }}" alink="black" vlink="black">Login</a></li>
-            <li><a class="navbar-text" href="{{ url_for('users.signup') }}" alink="black" vlink="black">Sign Up</a></li>
+            <li><a class="navbar-text" href="{{ url_for('users.login') }}" alink="black" vlink="black" id="login">Login</a></li>
+            <li><a class="navbar-text" href="{{ url_for('users.signup') }}" alink="black" vlink="black" id="sign_up">Sign Up</a></li>
           
         {% endif %}
           </ul>
