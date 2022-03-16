@@ -25,8 +25,7 @@
           <ul>
             {% if current_user.is_authenticated %}
             <li><a class="navbar-text" href="{{ url_for('users.profile') }}"><img class="profile-navbar" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}"></a></li>
-            <li><a class="navbar-text" href="{{ url_for('users.logout') }}" alink="black" vlink="black">Logout</a></li>
-          
+            <li><a class="navbar-text" href="{{ url_for('users.logout') }}" alink="black" vlink="black" id="logout">Logout</a></li>
         {% else %}
             <li><a class="navbar-text" href="{{ url_for('users.login') }}" alink="black" vlink="black" id="login">Login</a></li>
             <li><a class="navbar-text" href="{{ url_for('users.signup') }}" alink="black" vlink="black" id="sign_up">Sign Up</a></li>
@@ -38,7 +37,7 @@
       </div>
     </div>
     <div class="menu" >
-      <nav class="menubar" >
+      <nav class="menubar">
         <ul id="menu">
           <li><a class="#" id="menu_home" href="{{ url_for('main.index') }}" alink="black" vlink="black">Home</a></li>
           <li><a class="#" id="menu_about" href="{{ url_for('main.about') }}" alink="black" vlink="black">About</a></li>
