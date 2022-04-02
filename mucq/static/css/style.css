@@ -114,6 +114,16 @@ nav {
     align-items: center;
 }
 
+.search-bar-field {
+    padding:10px;
+    font-size: 20px;
+    margin: 5px 15px;
+    border-radius: 15px;
+    width: 50%;
+    overflow: hidden;
+    flex: 1;
+}
+
 /* content */
 
 .content {
@@ -197,7 +207,7 @@ nav {
 
 .post-main {
     padding: 25px;
-    
+
 }
 
 .post-text {
@@ -275,7 +285,7 @@ textarea {
         font-size: 15px;
         text-align: left;
         text-size-adjust: auto;
-    } 
+    }
 
     textarea {
         width: 100%;

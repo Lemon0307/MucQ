@@ -20,7 +20,7 @@ def index():
         flash('Your post has been created!', 'success')
 
     return render_template('index.html', posts=posts, form=form)
-    
+
 
 @main.route('/about')
 def about():

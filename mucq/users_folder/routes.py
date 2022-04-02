@@ -57,6 +57,15 @@ def profile():
     image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
     return render_template('profile.html', title='My Profile', image_file=image_file)
 
+
+#Currently in development
+@users.route('/profile/<int:user_id>')
+def user_profile(user_id):
+    from mucq.models import User
+    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    return render_template('profile.html', title='My Profile', image_file=image_file)
+#Currently in development
+
 @login_required
 @users.route('/update_profile', methods=['GET', 'POST'])
 def update_profile():

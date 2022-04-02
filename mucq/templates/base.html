@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,8 +19,8 @@
           <img class="logo" src="{{ url_for('static', filename='mucq-logo.png') }}"/>
           <a class="logo-text" href="{{ url_for('main.index') }}">MucQ</a>
         </div>
-        
-      
+
+
         <nav>
           <ul>
             {% if current_user.is_authenticated %}
@@ -29,7 +29,7 @@
         {% else %}
             <li><a class="navbar-text" href="{{ url_for('users.login') }}" alink="black" vlink="black" id="login">Login</a></li>
             <li><a class="navbar-text" href="{{ url_for('users.signup') }}" alink="black" vlink="black" id="sign_up">Sign Up</a></li>
-          
+
         {% endif %}
           </ul>
         </nav>
@@ -39,10 +39,10 @@
     <div class="menu" >
       <nav class="menubar">
         <ul id="menu">
-          <li><a class="#" id="menu_home" href="{{ url_for('main.index') }}" alink="black" vlink="black">Home</a></li>
-          <li><a class="#" id="menu_about" href="{{ url_for('main.about') }}" alink="black" vlink="black">About</a></li>
-          <li><a class="#" id="menu_support" href="{{ url_for('main.helpcenter') }}" alink="black" vlink="black">Support</a></li>
-          
+          <li><a class="#" id="menuhome" href="{{ url_for('main.index') }}" alink="black" vlink="black">Home</a></li>
+          <li><a class="#" id="menuabout" href="{{ url_for('main.about') }}" alink="black" vlink="black">About</a></li>
+          <li><a class="#" id="menusupport" href="{{ url_for('main.helpcenter') }}" alink="black" vlink="black">Support</a></li>
+
         </ul>
       </nav>
     </div>
@@ -52,7 +52,8 @@
     <div class="alert-{{ category }}">{{ message }}</div>
     <br />
     {% endfor %} {% endif %} {% endwith %}
-    
+
+    <div class="search-bar"><input class="search-bar-field type="text" placeholder="Search for an item..."></div>
     <div class="content">{% block body %}{% endblock %}
       <br>
       <div class="footer">
