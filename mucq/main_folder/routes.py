@@ -1,7 +1,13 @@
 from flask import render_template, url_for, redirect, request, Blueprint, flash
 from flask_login import current_user, login_required
+from mucq.main_folder.forms import SearchForm
 
 main = Blueprint('main', __name__)
+
+@main.context_processor
+def base():
+    form = SearchForm()
+    return dict(form=form)
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
@@ -35,3 +41,14 @@ def helpcenter():
 @main.route('/terms-of-service')
 def tos():
     return render_template('tos.html', title='Terms of Service')
+
+@main.route('/search', methods=['POST'])
+def search():
+    from mucq.models import Post
+    form = SearchForm()
+    posts = Post.query
+    if form.validate_on_submit():
+        SearchForm.searched = form.searched.data
+        posts = posts.filter(Post.content.like('%' + SearchForm.searched + '%'))
+        posts = posts.order_by(Post.title).all()
+        return render_template('search.html', form=form, searched=SearchForm.searched, posts=posts)
