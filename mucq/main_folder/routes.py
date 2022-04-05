@@ -52,3 +52,4 @@ def search():
         posts = posts.filter(Post.content.like('%' + SearchForm.searched + '%'))
         posts = posts.order_by(Post.title).all()
         return render_template('search.html', form=form, searched=SearchForm.searched, posts=posts)
+    return render_template('search.html', form=form, searched=SearchForm.searched, posts=posts)

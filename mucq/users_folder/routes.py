@@ -1,4 +1,5 @@
 from flask import render_template, url_for, redirect, request, flash, Blueprint
+from mucq.models import User
 from mucq.users_folder.forms import (SignUpForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
 from flask_login import login_required, login_user, current_user, logout_user
 from mucq.users_folder.utils import save_picture, send_reset_email
