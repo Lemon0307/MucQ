@@ -12,37 +12,116 @@
   </head>
   <body>
     <div class="container">
-      <a id="eng-button" language="english" class="eng_button" href="#eng" data-reload>English</a>
-      <a id="chi-button" language="t_chinese" class="chi_button" href="#chi" data-reload>繁體中文</a>
+      <a
+        id="eng-button"
+        language="english"
+        class="eng_button"
+        href="#eng"
+        data-reload
+        >English</a
+      >
+      <a
+        id="chi-button"
+        language="t_chinese"
+        class="chi_button"
+        href="#chi"
+        data-reload
+        >繁體中文</a
+      >
       <div class="navbar" id="navbar">
         <div class="logo-wrapped">
-          <img class="logo" src="{{ url_for('static', filename='mucq-logo.png') }}"/>
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='mucq-logo.png') }}"
+          />
           <a class="logo-text" href="{{ url_for('main.index') }}">MucQ</a>
         </div>
-
 
         <nav>
           <ul>
             {% if current_user.is_authenticated %}
-            <li><a class="navbar-text" href="{{ url_for('users.profile') }}"><img class="profile-navbar" src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}"></a></li>
-            <li><a class="navbar-text" href="{{ url_for('users.logout') }}" alink="black" vlink="black" id="logout">Logout</a></li>
-        {% else %}
-            <li><a class="navbar-text" href="{{ url_for('users.login') }}" alink="black" vlink="black" id="login">Login</a></li>
-            <li><a class="navbar-text" href="{{ url_for('users.signup') }}" alink="black" vlink="black" id="sign_up">Sign Up</a></li>
+            <li>
+              <a class="navbar-text" href="{{ url_for('users.profile') }}"
+                ><img
+                  class="profile-navbar"
+                  src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}"
+              /></a>
+            </li>
+            <li>
+              <a
+                class="navbar-text"
+                href="{{ url_for('users.logout') }}"
+                alink="black"
+                vlink="black"
+                id="logout"
+                >Logout</a
+              >
+            </li>
+            {% else %}
+            <li>
+              <a
+                class="navbar-text"
+                href="{{ url_for('users.login') }}"
+                alink="black"
+                vlink="black"
+                id="login"
+                >Login</a
+              >
+            </li>
+            <li>
+              <a
+                class="navbar-text"
+                href="{{ url_for('users.signup') }}"
+                alink="black"
+                vlink="black"
+                id="sign_up"
+                >Sign Up</a
+              >
+            </li>
 
-        {% endif %}
+            {% endif %}
           </ul>
         </nav>
-        <img src="{{ url_for('static', filename='menu.jpg') }}" class="nav-button" onclick="togglemenu()">
+        <img
+          src="{{ url_for('static', filename='menu.jpg') }}"
+          class="nav-button"
+          onclick="togglemenu()"
+        />
       </div>
     </div>
-    <div class="menu" >
+    <div class="menu">
       <nav class="menubar">
         <ul id="menu">
-          <li><a class="#" id="menuhome" href="{{ url_for('main.index') }}" alink="black" vlink="black">Home</a></li>
-          <li><a class="#" id="menuabout" href="{{ url_for('main.about') }}" alink="black" vlink="black">About</a></li>
-          <li><a class="#" id="menusupport" href="{{ url_for('main.helpcenter') }}" alink="black" vlink="black">Support</a></li>
-
+          <li>
+            <a
+              class="#"
+              id="menuhome"
+              href="{{ url_for('main.index') }}"
+              alink="black"
+              vlink="black"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a
+              class="#"
+              id="menuabout"
+              href="{{ url_for('main.about') }}"
+              alink="black"
+              vlink="black"
+              >About</a
+            >
+          </li>
+          <li>
+            <a
+              class="#"
+              id="menusupport"
+              href="{{ url_for('main.helpcenter') }}"
+              alink="black"
+              vlink="black"
+              >Support</a
+            >
+          </li>
         </ul>
       </nav>
     </div>
@@ -55,13 +134,15 @@
 
     <div class="search-bar">
       <form method="POST" action="{{ url_for('main.search') }}">
-      <input class="search-bar-field type="text" placeholder="Search for an item..." name="searched">
-      <button class="search-submit" type="submit">Search</button>
+        <input class="search-bar-field type="text" placeholder="Search for an
+        item..." name="searched">
+        <button class="search-submit" type="submit">Search</button>
       </form>
     </div>
-    
-    <div class="content">{% block body %}{% endblock %}
-      <br>
+
+    <div class="content">
+      {% block body %}{% endblock %}
+      <br />
       <div class="footer">
         <h3>Copyright &copy; MucQ Cooperation</h3>
       </div>

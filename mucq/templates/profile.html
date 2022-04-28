@@ -1,19 +1,26 @@
-{% extends 'base.html' %}
-
-{% block head %}
-
-{% endblock %}
-
-{% block body %}
-    <h1 style="color: #3498DB">My Profile</h1>
-        <div class="profile-div">
-        <div class="wrapper-3" style="display:inline; white-space:nowrap"></div>
-        <img class="profile-pic" src="{{ image_file }}" align="left" style="margin-right: 30px;">
-    <h2 class="user-label-profile" style="text-decoration: none; color: white; text-shadow: 4px 4px #555555;">{{ current_user.username }}</h2>
-    <p class="user-label-profile profile-text">{{ current_user.email }}</p>
-    <!-- <p class="user-label-profile profile-text">{{ current_user.about_me }}</p> -->
-    <br>
-    <button class="btn"><form action="{{ url_for('users.update_profile') }}" method="POST">
-        <input class="btn" type="submit" value="Update Profile">
-      </form></button>
-{% endblock %}
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+<h1 style="color: #3498db">My Profile</h1>
+<div class="profile-div">
+  <div class="wrapper-3" style="display: inline; white-space: nowrap"></div>
+  <img
+    class="profile-pic"
+    src="{{ image_file }}"
+    align="left"
+    style="margin-right: 30px"
+  />
+  <h2
+    class="user-label-profile"
+    style="text-decoration: none; color: white; text-shadow: 4px 4px #555555"
+  >
+    {{ current_user.username }}
+  </h2>
+  <p class="user-label-profile profile-text">{{ current_user.email }}</p>
+  <!-- <p class="user-label-profile profile-text">{{ current_user.about_me }}</p> -->
+  <br />
+  <button class="btn">
+    <form action="{{ url_for('users.update_profile') }}" method="POST">
+      <input class="btn" type="submit" value="Update Profile" />
+    </form>
+  </button>
+  {% endblock %}
+</div>

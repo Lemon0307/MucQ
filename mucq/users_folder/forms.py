@@ -4,6 +4,7 @@ from flask_wtf.file import FileField, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
+
 class SignUpForm(FlaskForm):
     username = StringField('Username:', validators=[
                            DataRequired(), Length(min=2, max=20)])
@@ -46,7 +47,8 @@ class UpdateAccountForm(FlaskForm):
     def validate_username(self, username):
         import mucq.models
         if username.data != current_user.username:
-            user = mucq.models.User.query.filter_by(username=username.data).first()
+            user = mucq.models.User.query.filter_by(
+                username=username.data).first()
             if user:
                 raise ValidationError(
                     'That username is used, please choose another username')
@@ -58,6 +60,7 @@ class UpdateAccountForm(FlaskForm):
             if user:
                 raise ValidationError(
                     'There is already an account using this email')
+
 
 class RequestResetForm(FlaskForm):
     email = StringField('Email:', validators=[DataRequired(), Email()])
