@@ -34,13 +34,14 @@
     </div>
   </div>
   <br />
-  <div class="form-group">{{ form.submit(class="btn") }}
+  <div class="form-group">
+    {{ form.submit(class="btn") }}
     <small class="text-muted">
-    <a href="{{ url_for('users.reset_request') }}">Forgot Password</a>
-  </small>
-</div>
+      <a href="{{ url_for('users.reset_request') }}">Forgot Password</a>
+    </small>
+  </div>
   <br />
-  
+
   <small class="text-muted">
     Don't have an account?
     <a class="ml-2" href="{{ url_for('users.signup') }}">Create an account</a>

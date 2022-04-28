@@ -12,6 +12,7 @@ db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
 
+
 def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
@@ -20,7 +21,7 @@ def create_app(config_class=Config):
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
-    
+
     import mucq.main_folder.routes as main
     import mucq.posts_folder.routes as posts
     import mucq.users_folder.routes as users

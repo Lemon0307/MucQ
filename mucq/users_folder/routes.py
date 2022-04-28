@@ -1,10 +1,12 @@
 from flask import render_template, url_for, redirect, request, flash, Blueprint
 from mucq.models import User
-from mucq.users_folder.forms import (SignUpForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
+from mucq.users_folder.forms import (
+    SignUpForm, LoginForm, UpdateAccountForm, RequestResetForm, ResetPasswordForm)
 from flask_login import login_required, login_user, current_user, logout_user
 from mucq.users_folder.utils import save_picture, send_reset_email
 
 users = Blueprint('users', __name__)
+
 
 @users.route('/signup', methods=['GET', 'POST'])
 def signup():
@@ -18,7 +20,7 @@ def signup():
         hashed_password = bcrypt.generate_password_hash(
             form.password.data).decode('utf-8')
         user = mucq.models.User(username=form.username.data,
-                    email=form.email.data, password=hashed_password)
+                                email=form.email.data, password=hashed_password)
         db.session.add(user)
         db.session.commit()
         flash(
@@ -52,10 +54,12 @@ def logout():
     flash('Successfully logged out!', 'success')
     return redirect(url_for('main.index'))
 
+
 @login_required
 @users.route('/profile')
 def profile():
-    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    image_file = url_for(
+        'static', filename='profile_pics/' + current_user.image_file)
     return render_template('profile.html', title='My Profile', image_file=image_file)
 
 
@@ -63,9 +67,11 @@ def profile():
 @users.route('/profile/<int:user_id>')
 def user_profile(user_id):
     from mucq.models import User
-    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    image_file = url_for(
+        'static', filename='profile_pics/' + current_user.image_file)
     return render_template('profile.html', title='My Profile', image_file=image_file)
 #Currently in development
+
 
 @login_required
 @users.route('/update_profile', methods=['GET', 'POST'])
@@ -84,8 +90,10 @@ def update_profile():
     elif request.method == 'GET':
         form.username.data = current_user.username
         form.email.data = current_user.email
-    image_file = url_for('static', filename='profile_pics/' + current_user.image_file)
+    image_file = url_for(
+        'static', filename='profile_pics/' + current_user.image_file)
     return render_template('update_profile.html', title='Update Profile', image_file=image_file, form=form)
+
 
 @users.route('/reset_password', methods=['GET', 'POST'])
 def reset_request():
