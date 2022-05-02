@@ -17,7 +17,7 @@ function togglemenu() {
 
 var language = {
     eng: {
-        home: 'Home',
+        home: 'Feed',
         support: 'Support',
         login: 'Login',
         sign_up: 'Sign Up',

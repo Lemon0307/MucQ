@@ -1,6 +1,6 @@
 var language = {
     eng: {
-        home: 'Home',
+        home: 'Feed',
         title: 'Title',
         content: 'Content',
         create: 'Create',
