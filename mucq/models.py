@@ -51,3 +51,13 @@ class Post(db.Model):
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
         #
+
+class Products(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    product_image = db.Column(db.String(20), unique=False, nullable=False)
+    product_name = db.Column(db.String(40), nullable=False)
+    description = db.Column(db.Text, nullable=False)
+    likes = db.Column(db.Integer, nullable=False)
+    
+    def __repr__(self):
+        return f"POST('{self.product_name}', '{self.description}')"
