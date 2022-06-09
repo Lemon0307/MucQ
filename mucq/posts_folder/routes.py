@@ -9,7 +9,7 @@ posts = Blueprint('posts', __name__)
 def post(post_id):
     import mucq.models
     post = mucq.models.Post.query.get_or_404(post_id)
-    return render_template('post.html', post=post)
+    return render_template('/posts/post.html', post=post)
 
 
 @posts.route('/post/<int:post_id>/update', methods=['GET', 'POST'])
@@ -22,15 +22,13 @@ def update_post(post_id):
         abort(403)
     form = mucq.posts_folder.forms.PostForm()
     if form.validate_on_submit():
-        post.title = form.title.data
         post.content = form.content.data
         db.session.commit()
         flash('Your post has been updated!', 'success')
         return redirect(url_for('posts.post', post_id=post.id))
     elif request.method == 'GET':
-        form.title.data = post.title
         form.content.data = post.content
-    return render_template('create_post.html', title='Update Post', form=form, legend='Update Post')
+    return render_template('/posts/create_post.html', title='Update Post', form=form, legend='Update Post')
 
 @posts.route('/post/<int:post_id>/delete', methods=['POST'])
 @login_required
