@@ -26,7 +26,7 @@ def signup():
         flash(
             f"Account successfully created for {form.username.data}", "success")
         return redirect(url_for('users.login'))
-    return render_template('sign_up.html', form=form)
+    return render_template('/users/sign_up.html', form=form)
 
 
 @users.route('/login', methods=['GET', 'POST'])
@@ -45,7 +45,7 @@ def login():
             return redirect(url_for('main.index'))
         else:
             flash("Login failed. Please enter the correct details", 'danger')
-    return render_template("login.html", form=form)
+    return render_template("/users/login.html", form=form)
 
 
 @users.route('/logout')
@@ -60,7 +60,7 @@ def logout():
 def profile():
     image_file = url_for(
         'static', filename='profile_pics/' + current_user.image_file)
-    return render_template('profile.html', title='My Profile', image_file=image_file)
+    return render_template('/users/profile.html', title='My Profile', image_file=image_file)
 
 
 #Currently in development
@@ -69,7 +69,7 @@ def user_profile(user_id):
     from mucq.models import User
     image_file = url_for(
         'static', filename='profile_pics/' + current_user.image_file)
-    return render_template('profile.html', title='My Profile', image_file=image_file)
+    return render_template('/users/profile.html', title='My Profile', image_file=image_file)
 #Currently in development
 
 
@@ -92,7 +92,7 @@ def update_profile():
         form.email.data = current_user.email
     image_file = url_for(
         'static', filename='profile_pics/' + current_user.image_file)
-    return render_template('update_profile.html', title='Update Profile', image_file=image_file, form=form)
+    return render_template('/users/update_profile.html', title='Update Profile', image_file=image_file, form=form)
 
 
 @users.route('/reset_password', methods=['GET', 'POST'])
@@ -106,7 +106,7 @@ def reset_request():
         send_reset_email(user)
         flash('An email has been sent with instructions on how to reset your password to your email', 'success')
         return redirect(url_for('users.login'))
-    return render_template('reset_request.html', title='Reset Password', form=form)
+    return render_template('/users/reset_request.html', title='Reset Password', form=form)
 
 
 @users.route('/reset_password/<token>', methods=['GET', 'POST'])
@@ -128,4 +128,4 @@ def reset_token(token):
         flash(
             f"Account password has been successfully updated!", "success")
         return redirect(url_for('users.login'))
-    return render_template('reset_token.html', title='Reset Password', form=form)
+    return render_template('/users/reset_token.html', title='Reset Password', form=form)

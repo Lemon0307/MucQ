@@ -51,22 +51,9 @@
 
 <!-- All Posts -->
 {% for post in posts.items %}
+<a href="{{ url_for('posts.post', post_id=post.id) }}" style="text-decoration: none;color: white;text-shadow: 4px 4px #555555;" alink="white" vlink="white">
 <div class="post">
   <div class="post-main">
-    <h2 class="post-text">
-      <a
-        href="{{ url_for('posts.post', post_id=post.id) }}"
-        style="
-          text-decoration: none;
-          color: white;
-          text-shadow: 4px 4px #555555;
-        "
-        alink="white"
-        vlink="white"
-        >Title: </a>{{ post.title }}</a
-      >
-    </h2>
-    <br>
     <p class="post-text">{{ post.content }}</p>
     <br>
     <a class="profile-pic-post" href="#"><img
@@ -82,6 +69,8 @@
     >
   </div>
 </div>
+</a>
+
 {% endfor %}
 {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=1) %}
 {% if page_num %}

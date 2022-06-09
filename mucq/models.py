@@ -1,5 +1,5 @@
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from mucq.__init__ import login_manager, db
+from mucq.__init__ import login_manager, db, create_app
 from flask import current_app
 from datetime import datetime
 from flask_login import UserMixin

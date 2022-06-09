@@ -1,6 +1,7 @@
 from flask import render_template, url_for, redirect, request, Blueprint, flash
 from flask_login import current_user, login_required
-from mucq.main_folder.forms import SearchForm
+from mucq.main_folder.forms import SearchForm, FeedbackForm
+import datetime
 
 main = Blueprint('main', __name__)
 
@@ -16,8 +17,7 @@ def index():
     from mucq.models import Post
     import mucq.posts_folder.forms
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(
-        Post.date_posted.desc()).paginate(page=page, per_page=7)
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=7)
     from mucq.__init__ import db
     import mucq.models
     form = mucq.posts_folder.forms.PostForm()
@@ -59,3 +59,17 @@ def search():
         posts = posts.order_by(Post.title).all()
         return render_template('/main/search.html', form=form, searched=SearchForm.searched, posts=posts)
     return render_template('/main/search.html', form=form, searched=SearchForm.searched, posts=posts)
+
+@main.route('/feedback', methods=['GET', 'POST'])
+def feedback():
+    from mucq.__init__ import db
+    from mucq.models import Feedback
+    form = FeedbackForm()
+    if form.validate_on_submit():
+        d = datetime.datetime.now()
+        f = Feedback(name=form.name.data, email=form.email.data, feedback=form.feedback.data, date=d)
+        db.session.add(f)
+        db.session.commit()
+        flash("Feedback submitted")
+        return redirect(url_for('index'))
+    return render_template('/main/feedback.html', form=form)
