@@ -120,7 +120,7 @@ nav {
     align-items: center;
 }
 
-.search-submit {
+/* .search-submit {
     border-width: 0px;
     border-radius: 20px;
     padding: 10px;
@@ -130,7 +130,7 @@ nav {
     color: white;
     padding-left: 20px;
     padding-right: 20px;
-}
+} */
 
 .search-bar-field {
     padding:10px;
@@ -172,16 +172,21 @@ nav {
     border-radius: 15px;
     font-family: 'Source Code Pro', monospace;
     align-items: center;
+    color: white;
+    text-shadow: 1px black;
 }
 
 .alert-success {
     padding: 20px 20px;
     margin: 10px 10px;
-    background-color: #66D622;
+    background-color: #33cc33;
     font-size: 20px;
     border-radius: 15px;
     font-family: 'Source Code Pro', monospace;
     align-items: center;
+    color: white;
+    text-shadow: 2px 2px black;
+
 }
 
 .profile-pic {
@@ -248,11 +253,20 @@ nav {
     color: white;
     padding-left: 20px;
     padding-right: 20px;
+    text-decoration: none;
+}
+
+.btn:hover {
+    color: grey;
 }
 
 .btn-2 {
     border-width: 0px;
     background-color: #22314F;
+}
+
+.btn-danger {
+    background-color: crimson;
 }
 
 .line-1 {
@@ -330,5 +344,20 @@ textarea {
 }
 
 .chi_button:hover {
+    color: grey;
+}
+/* support */
+.contact-us{
+    background-color:#22314f;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 20px;
+    border:none;
+    border-radius:10px;
+    width:500px;
+    height:60px;
+    text-decoration: none;
+    color: white;
+}
+.contact-us:hover {
     color: grey;
 }
