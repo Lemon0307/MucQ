@@ -6,4 +6,4 @@ class ProductsForm(FlaskForm):
     product_name = StringField('Product Name', validators=[DataRequired()])
     product_image = FileField('Product Photo', validators=[DataRequired()])
     description = StringField('Description', validators=[DataRequired()])
-    submit = SubmitField('Create')
+    submit = SubmitField('Create Post')

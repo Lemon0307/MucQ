@@ -1,5 +1,5 @@
 from flask import render_template, url_for, redirect, request, Blueprint, flash
-from flask_login import current_user, login_required
+from flask_login import current_user
 from mucq.main_folder.forms import SearchForm, FeedbackForm
 import datetime
 
@@ -20,10 +20,9 @@ def index():
     posts = Post.query.order_by(
         Post.date_posted.desc()).paginate(page=page, per_page=7)
     from mucq.__init__ import db
-    import mucq.models
     form = mucq.posts_folder.forms.PostForm()
     if form.validate_on_submit():
-        post = mucq.models.Post(content=form.content.data, author=current_user)
+        post = Post(content=form.content.data, author=current_user)
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
