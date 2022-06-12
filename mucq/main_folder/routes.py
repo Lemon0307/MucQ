@@ -17,7 +17,8 @@ def index():
     from mucq.models import Post
     import mucq.posts_folder.forms
     page = request.args.get('page', 1, type=int)
-    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=7)
+    posts = Post.query.order_by(
+        Post.date_posted.desc()).paginate(page=page, per_page=7)
     from mucq.__init__ import db
     import mucq.models
     form = mucq.posts_folder.forms.PostForm()
@@ -60,6 +61,7 @@ def search():
         return render_template('/main/search.html', form=form, searched=SearchForm.searched, posts=posts)
     return render_template('/main/search.html', form=form, searched=SearchForm.searched, posts=posts)
 
+
 @main.route('/feedback', methods=['GET', 'POST'])
 def feedback():
     from mucq.__init__ import db
@@ -67,7 +69,8 @@ def feedback():
     form = FeedbackForm()
     if form.validate_on_submit():
         d = datetime.datetime.now()
-        f = Feedback(name=form.name.data, email=form.email.data, feedback=form.feedback.data, date=d)
+        f = Feedback(name=form.name.data, email=form.email.data,
+                     feedback=form.feedback.data, date=d)
         db.session.add(f)
         db.session.commit()
         flash("Feedback submitted")

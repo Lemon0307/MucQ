@@ -8,10 +8,13 @@ class SearchForm(FlaskForm):
     searched = StringField('Searched', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
+
 class FeedbackForm(FlaskForm):
     name = StringField('Name', validators=[validators.DataRequired()])
-    email = EmailField('Email', validators=[validators.DataRequired(), validators.Length(1, 100), validators.Email()])
-    feedback = TextAreaField('Feedback', validators=[validators.DataRequired()])
+    email = EmailField('Email', validators=[
+                       validators.DataRequired(), validators.Length(1, 100), validators.Email()])
+    feedback = TextAreaField('Feedback', validators=[
+                             validators.DataRequired()])
     submit = SubmitField('Submit feedback')
 
 
