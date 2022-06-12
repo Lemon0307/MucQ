@@ -1,36 +1,25 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
-<form method="POST" action="">
-  {{ form.hidden_tag() }}
-  <div class="form-group">
-    <h1 style="color: #3498db">{{ legend }}</h1>
-    <div class="form-group">
-      {{ form.title.label(class="form-control-label") }}
-      <br />
-      {% if form.title.errors %} {{ form.title(class="form-control is-invalid")
-      }}
-      <div class="invalid-feedback">
-        {% for errors in form.title.errors %}
-        <span>{{ error }}</span>
-        {% endfor %}
-      </div>
-      {% else %} {{ form.title(class="form-control form-control-lg") }} {% endif
-      %}
+<div id="create_post" class="create-post-div>
+  <form method="POST" action="">
+    {{ form.hidden_tag() }}
+    <div class="form-group create-post">
+        <h1 style="color: #3498DB">{{ legend }}</h1>
+        <div class="form-group create-post-text">
+            {{ form.content.label(class="form-control-label", id="create_post_content") }}
+            {% if form.content.errors %}
+            {{ form.content(class="form-control is-invalid") }}
+            <div class="invalid-feedback">
+                {% for errors in form.content.errors %}
+                    <span>{{ error }}</span>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="create-post-submit">
+              {{ form.content(class="form-control") }}
+            </div>
+        {% endif %}
+        </div>
+        {{ form.submit(class="btn") }}
     </div>
-    <div class="form-group">
-      {{ form.content.label(class="form-control-label") }}
-      <br />
-      {% if form.content.errors %} {{ form.content(class="form-control
-      is-invalid") }}
-      <div class="invalid-feedback">
-        {% for errors in form.content.errors %}
-        <span>{{ error }}</span>
-        {% endfor %}
-      </div>
-      {% else %} {{ form.content(class="form-control") }} {% endif %}
-    </div>
-  </div>
-  <br />
-  <div class="form-group">{{ form.submit(class="btn") }}</div>
-  <br />
+    <br>
 </form>
-{% endblock %}
+</div>
