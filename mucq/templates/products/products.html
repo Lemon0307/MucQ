@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
 <button class="btn"><a class="btn" href="{{ url_for('products.create_product') }}">Create Product</a></button>
 {% for product in products %}
+this page is currently in development
 <div class="products">
     <h1>{{product.author.product_name}}</h1>
     <p>{{product.author.description}}</p>

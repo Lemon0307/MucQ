@@ -83,9 +83,9 @@ nav {
 
 .menubar ul li {
   list-style: none;
-  display: inline-block;
-  margin-left: 30px;
+  display: flex;
   float: left;
+  margin-left: 30px;
 }
 
 .menubar ul li a {
@@ -118,6 +118,7 @@ nav {
 /* Search */
 
 .search-bar {
+  display: inline;
   align-items: center;
 }
 

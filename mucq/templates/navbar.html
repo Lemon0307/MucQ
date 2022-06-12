@@ -1,3 +1,11 @@
+<div class="logo-wrapped">
+  <img
+    class="logo"
+    src="{{ url_for('static', filename='mucq-logo.png') }}"
+  />
+  <a class="logo-text" href="{{ url_for('main.index') }}">MucQ</a>
+</div>
+
 <nav>
   <ul>
     {% if current_user.is_authenticated %}
@@ -16,16 +24,6 @@
         vlink="black"
         id="logout"
         >Logout</a
-      >
-    </li>
-    <li>
-      <a
-        class="navbar-text"
-        href="{{ url_for('main.admin') }}"
-        alink="black"
-        vlink="black"
-        id="sign_up"
-        >Admin Page</a
       >
     </li>
     {% else %}
