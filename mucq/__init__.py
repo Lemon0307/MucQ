@@ -7,7 +7,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from mucq.config import Config
 from flask_wtf.csrf import CsrfProtect
-
+from flask_migrate import Migrate
 mail = Mail()
 db = SQLAlchemy()
 bcrypt = Bcrypt()
@@ -19,6 +19,7 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
     
+    migrate = Migrate(app, db)
     CsrfProtect(app)
     mail.init_app(app)
     db.init_app(app)
