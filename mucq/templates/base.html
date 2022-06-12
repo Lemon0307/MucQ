@@ -31,6 +31,7 @@
       >
       <div class="navbar" id="navbar">
         {% include 'navbar.html' %}
+
         <img
           src="{{ url_for('static', filename='menu.jpg') }}"
           class="nav-button"
@@ -38,11 +39,6 @@
         />
       </div>
     </div>
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %}
-    <div class="alert-{{ category }}">{{ message }}</div>
-    {% endfor %} {% endif %} {% endwith %}
-
     <div class="search-bar">
       <form method="POST" action="{{ url_for('main.search') }}">
         <input class="search-bar-field type="text" placeholder="Search for an
@@ -50,6 +46,10 @@
         <button class="btn" type="submit">Search</button>
       </form>
     </div>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="alert-{{ category }}">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %}
 
     <div class="content">
       {% block body %}{% endblock %}

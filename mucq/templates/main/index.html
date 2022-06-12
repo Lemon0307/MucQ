@@ -23,7 +23,7 @@
   {% for post in posts.items %}
     <div class="post">
       <div class="post-main">
-        <p class="post-text">{{ post.content }}</p>
+        <p class="post-text"><a class="post-username" alink="white" vlink="white" href="#">{{ post.author.username }}</a>: {{ post.content }}</p>
         <a class="profile-pic-post" href="#"
           ><img
             class="profile-pic-post"
@@ -31,14 +31,7 @@
             align="left"
             style="margin-right: 20px"
         /></a>
-        <a
-          style="
-            text-decoration: none;
-            color: white;
-            text-shadow: 2px 2px #555555;
-          "
-          ><small>{{ post.author.username }} </small></a
-        ><small class="post-text"
+        <small
           >{{ post.date_posted.strftime('(Posted at %Y-%m-%d)') }}</small
         >
         {% include '/posts/post_tools.html' %}

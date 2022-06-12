@@ -73,7 +73,6 @@ def user_profile(user_id):
     return render_template('/users/profile.html', title='My Profile', image_file=image_file)
 #Currently in development
 
-
 @login_required
 @users.route('/update_profile', methods=['GET', 'POST'])
 def update_profile():

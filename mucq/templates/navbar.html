@@ -1,55 +1,5 @@
-<nav class="navbar">
-  <div class="logo-wrapped">
-    <img
-      class="logo"
-      src="{{ url_for('static', filename='mucq-logo.png') }}"
-    />
-    <a class="logo-text" href="{{ url_for('main.index') }}">MucQ</a>
-  </div>
+<nav>
   <ul>
-    <li>
-      <a
-        class="#"
-        id="menuhome"
-        href="{{ url_for('main.index') }}"
-        alink="black"
-        vlink="black"
-        >Feed</a
-      >
-    </li>
-    <li>
-      <a
-        class="#"
-        id="menuhome"
-        href="{{ url_for('products.product') }}"
-        alink="black"
-        vlink="black"
-        >Products</a
-      >
-    </li>
-    <li>
-      <a
-        class="#"
-        id="menuabout"
-        href="{{ url_for('main.about') }}"
-        alink="black"
-        vlink="black"
-        >About</a
-      >
-    </li>
-    <li>
-      <a
-        class="#"
-        id="menusupport"
-        href="{{ url_for('main.helpcenter') }}"
-        alink="black"
-        vlink="black"
-        >Support</a
-      >
-    </li>
-    <li>
-      <a href="{{ url_for('main.feedback') }}">Feedback</a>
-    </li>
     {% if current_user.is_authenticated %}
     <li>
       <a class="navbar-text" href="{{ url_for('users.profile') }}"
@@ -101,6 +51,60 @@
     </li>
 
     {% endif %}
-    
   </ul>
+</nav>
+<img
+  src="{{ url_for('static', filename='menu.jpg') }}"
+  class="nav-button"
+  onclick="togglemenu()"
+/>
+</div>
+</div>
+<div class="menu">
+<nav class="menubar">
+<ul id="menu">
+  <li>
+    <a
+      class="#"
+      id="menuhome"
+      href="{{ url_for('main.index') }}"
+      alink="black"
+      vlink="black"
+      >Feed</a
+    >
+  </li>
+  <li>
+    <a
+      class="#"
+      id="menuhome"
+      href="{{ url_for('products.product') }}"
+      alink="black"
+      vlink="black"
+      >Products</a
+    >
+  </li>
+  <li>
+    <a
+      class="#"
+      id="menuabout"
+      href="{{ url_for('main.about') }}"
+      alink="black"
+      vlink="black"
+      >About</a
+    >
+  </li>
+  <li>
+    <a
+      class="#"
+      id="menusupport"
+      href="{{ url_for('main.helpcenter') }}"
+      alink="black"
+      vlink="black"
+      >Support</a
+    >
+  </li>
+  <li>
+    <a href="{{ url_for('main.feedback') }}">Feedback</a>
+  </li>
+</ul>
 </nav>
