@@ -27,7 +27,8 @@ def index():
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created!', 'success')
-
+        return redirect(url_for('main.index'))
+        
     return render_template('/main/index.html', posts=posts, form=form)
 
 

@@ -17,7 +17,7 @@ class User(db.Model, UserMixin):
     image_file = db.Column(db.String(20), nullable=False,
                            default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
-    #about_me = db.Column(db.String(50), nullable=False)
+    about_me = db.Column(db.Text, nullable=True)
     posts = db.relationship('Post', backref='author', lazy=True)
 
     def get_reset_token(self, expires_sec=300):
@@ -25,7 +25,7 @@ class User(db.Model, UserMixin):
         return s.dumps({'user_id': self.id}).decode('utf-8')
 
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}', '{self.image_file}')"
+        return f"User('{self.username}', '{self.email}', '{self.about_me}', '{self.image_file}')"
 
     @staticmethod
     def verify_reset_token(token):
@@ -85,3 +85,6 @@ class Products(db.Model):
 
     def __repr__(self):
         return f"POST('{self.product_name}', '{self.description}')"
+
+def init_db():
+    db.create_all()

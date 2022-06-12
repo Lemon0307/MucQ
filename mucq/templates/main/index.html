@@ -21,12 +21,6 @@
 <!-- All Posts -->
 <div class="chat">
   {% for post in posts.items %}
-  <a
-    href="{{ url_for('posts.post', post_id=post.id) }}"
-    style="text-decoration: none; color: white; text-shadow: 4px 4px #555555"
-    alink="white"
-    vlink="white"
-  >
     <div class="post">
       <div class="post-main">
         <p class="post-text">{{ post.content }}</p>
@@ -50,7 +44,6 @@
         {% include '/posts/post_tools.html' %}
       </div>
     </div>
-  </a>
   {% endfor %}
   <!-- Pagination -->
 {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1,
@@ -68,8 +61,9 @@
 <!-- All Posts -->
 
 <!-- Create Posts -->
-{% include '/posts/create_post.html' %}
+{% include '/posts/main_create_post.html' %}
 <!-- Create Posts -->
 
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %}
+{% block title %}Feed{% endblock %}

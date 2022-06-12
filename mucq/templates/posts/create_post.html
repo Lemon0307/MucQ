@@ -1,25 +1,23 @@
-<div id="create_post" class="create-post-div">
-  <form method="POST" action="">
-    {{ form.hidden_tag() }}
-    <div class="form-group create-post">
-        <h1 style="color: #3498DB">{{ legend }}</h1>
-        <div class="form-group create-post-text">
-            {{ form.content.label(class="form-control-label create-post-textarea", id="create_post_content") }}
-            {% if form.content.errors %}
-            {{ form.content(class="form-control is-invalid") }}
-            <div class="invalid-feedback">
-                {% for errors in form.content.errors %}
-                    <span>{{ error }}</span>
-                {% endfor %}
-            </div>
-        {% else %}
-            <div class="create-post-submit">
-              {{ form.content(class="form-control") }}
-            </div>
-        {% endif %}
-        </div>
-        {{ form.submit(class="btn") }}
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+<form method="POST" action="">
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    <h1 style="color: #3498db">{{ legend }}</h1>
+    <div class="form-group">
+      {{ form.content.label(class="form-control-label") }}
+      <br />
+      {% if form.content.errors %} {{ form.content(class="form-control
+      is-invalid") }}
+      <div class="invalid-feedback">
+        {% for errors in form.content.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.content(class="form-control") }} {% endif %}
     </div>
-    <br>
+  </div>
+  <br />
+  <div class="form-group">{{ form.submit(class="btn") }}</div>
+  <br />
 </form>
-</div>
+{% endblock %}
