@@ -73,6 +73,6 @@ def feedback():
                      feedback=form.feedback.data, date=d)
         db.session.add(f)
         db.session.commit()
-        flash("Feedback submitted")
-        return redirect(url_for('index'))
+        flash("Feedback submitted", 'success')
+        return redirect(url_for('main.index'))
     return render_template('/main/feedback.html', form=form)

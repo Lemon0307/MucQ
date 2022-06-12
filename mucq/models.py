@@ -47,9 +47,11 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\
 
+
     def __repr__(self):
 
         return f"Post('{self.date_posted}')"
+
 
 class Feedback(db.Model):
     __tablename__ = 'feedback'
@@ -62,6 +64,7 @@ class Feedback(db.Model):
     def __repr__(self):
         return f"{self.name} , {self.email} , {self.feedback}, {self.date}"
 
+
 class Blog(db.Model):
     __tablename__ = 'blog'
     id = db.Column(db.Integer, primary_key=True)
@@ -72,12 +75,13 @@ class Blog(db.Model):
     def __repr__(self):
         return f"{self.title} , {self.text} , {self.date}"
 
+
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     product_image = db.Column(db.String(20), unique=False, nullable=False)
     product_name = db.Column(db.String(40), nullable=False)
     description = db.Column(db.Text, nullable=False)
     likes = db.Column(db.Integer, nullable=False)
-    
+
     def __repr__(self):
         return f"POST('{self.product_name}', '{self.description}')"

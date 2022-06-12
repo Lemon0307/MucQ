@@ -6,6 +6,7 @@ from flask import Flask
 from flask_login import LoginManager
 from flask_mail import Mail
 from mucq.config import Config
+from flask_wtf.csrf import CsrfProtect
 
 mail = Mail()
 db = SQLAlchemy()
@@ -18,6 +19,7 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
     
+    CsrfProtect(app)
     mail.init_app(app)
     db.init_app(app)
     bcrypt.init_app(app)
