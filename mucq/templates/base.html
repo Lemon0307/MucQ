@@ -12,7 +12,7 @@
     <title>{% block title %}{% endblock %}</title>
   </head>
   <body>
-    <div class="container">
+    <!--<div class="#">
       <a
         id="eng-button"
         language="english"
@@ -29,35 +29,32 @@
         data-reload
         >繁體中文</a
       >
-      <div class="navbar" id="navbar">
-        {% include 'navbar.html' %}
+    </div>-->
+    {% include 'navbar.html' %}
+    <br>
+    <div class="container">
+      {% include 'sidebar.html' %} {% with messages =
+      get_flashed_messages(with_categories=true) %} {% if messages %} {% for
+      category, message in messages %}
+      <div class="alert-{{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
 
-        <img
-          src="{{ url_for('static', filename='menu.jpg') }}"
-          class="nav-button"
-          onclick="togglemenu()"
-        />
+      <div class="content">
+        <div class="search-bar">
+          <form method="POST" action="{{ url_for('main.search') }}">
+            <input class="search-bar-field type="text" placeholder="Search for
+            an item..." name="searched">
+            <button class="btn" type="submit">Search</button>
+          </form>
+        </div>
+        {% block body %}{% endblock %}
+        <br />
+        <div class="footer">
+          <h3>Copyright &copy; MucQ Cooperation</h3>
+        </div>
       </div>
     </div>
-    <div class="search-bar">
-      <form method="POST" action="{{ url_for('main.search') }}">
-        <input class="search-bar-field type="text" placeholder="Search for an
-        item..." name="searched">
-        <button class="btn" type="submit">Search</button>
-      </form>
-    </div>
-    {% with messages = get_flashed_messages(with_categories=true) %} {% if
-    messages %} {% for category, message in messages %}
-    <div class="alert-{{ category }}">{{ message }}</div>
-    {% endfor %} {% endif %} {% endwith %}
 
-    <div class="content">
-      {% block body %}{% endblock %}
-      <br />
-      <div class="footer">
-        <h3>Copyright &copy; MucQ Cooperation</h3>
-      </div>
-    </div>
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
   </body>
 </html>
