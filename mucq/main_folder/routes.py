@@ -30,6 +30,10 @@ def index():
         
     return render_template('/main/index.html', posts=posts, form=form)
 
+@main.route('/admin')
+def admin():
+
+    return render_template('/admin/admin.html')
 
 @main.route('/about')
 def about():

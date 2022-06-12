@@ -68,6 +68,16 @@
         >Logout</a
       >
     </li>
+    <li>
+      <a
+        class="navbar-text"
+        href="{{ url_for('main.admin') }}"
+        alink="black"
+        vlink="black"
+        id="sign_up"
+        >Admin Page</a
+      >
+    </li>
     {% else %}
     <li>
       <a
@@ -91,5 +101,6 @@
     </li>
 
     {% endif %}
+    
   </ul>
 </nav>
