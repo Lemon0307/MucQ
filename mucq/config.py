@@ -8,3 +8,4 @@ class Config:
     MAIL_DEBUG = True
     MAIL_USERNAME = 'mucq.contact@gmail.com'
     MAIL_PASSWORD = 'sussyimposter'
+    TEMPLATES_AUTO_RELOAD = True

@@ -1,0 +1,22 @@
+{% if post.author == current_user %}
+  <div>
+    <button class="btn-2">
+      <a class="btn"
+        href="{{ url_for('posts.update_post', post_id=post.id) }}"
+        style="text-decoration: none; color: white"
+        alink="black"
+        vlink="black"
+        >Update Post</a
+      >
+    </button>
+    <button class="btn-2">
+      <form
+        action="{{ url_for('posts.delete_post', post_id=post.id) }}"
+        method="POST"
+      >
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <input class="btn btn-danger" type="submit" value="Delete" />
+      </form>
+    </button>
+  </div>
+  {% endif %}
