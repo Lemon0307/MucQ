@@ -6,40 +6,32 @@
   Welcome to MucQ! See what's new!
 </p>
 <br />
-{% if current_user.is_authenticated %}
-<!-- Header -->
 
-{% else %}
-
-<!-- Login Required -->
-<p id="loginReminder" style="color: #7383a6; text-align: center">
-  You will have to log in to join the conversation!
-</p>
-<!-- Login Required -->
-
-{% endif %}
 <!-- All Posts -->
 <div class="chat">
   {% for post in posts.items %}
-    <div class="post">
-      <div class="post-main">
-        <p class="post-text"><a class="post-username" alink="white" vlink="white" href="#">{{ post.author.username }}</a>: {{ post.content }}</p>
-        <a class="profile-pic-post" href="#"
-          ><img
-            class="profile-pic-post"
-            src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
-            align="left"
-            style="margin-right: 20px"
-        /></a>
-        <small
-          >{{ post.date_posted.strftime('(Posted at %Y-%m-%d)') }}</small
-        >
-        {% include '/posts/post_tools.html' %}
-      </div>
+  <div class="post">
+    <div class="post-main">
+      <p class="post-text">
+        <a class="post-username" alink="white" vlink="white" href="#"
+          >{{ post.author.username }}</a
+        >: {{ post.content }}
+      </p>
+      <a class="profile-pic-post" href="#"
+        ><img
+          class="profile-pic-post"
+          src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}"
+          align="left"
+          style="margin-right: 20px"
+      /></a>
+      <small>{{ post.date_posted.strftime('(Posted at %Y-%m-%d)') }}</small>
+      {% include '/posts/post_tools.html' %}
     </div>
+  </div>
   {% endfor %}
+  <br />
   <!-- Pagination -->
-{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1,
+  {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1,
   right_current=1) %} {% if page_num %} {% if posts.page == page_num %}
   <a class="btn-3" href='{{ url_for("main.index", page=page_num) }}'
     >{{page_num}}</a
@@ -53,10 +45,21 @@
 </div>
 <!-- All Posts -->
 
+{% if current_user.is_authenticated %}
+
 <!-- Create Posts -->
 {% include '/posts/main_create_post.html' %}
 <!-- Create Posts -->
 
+{% else %}
+
+<!-- Login Required -->
+<p id="loginReminder" style="color: #7383a6; text-align: center">
+  You will have to log in to join the conversation!
+</p>
+<!-- Login Required -->
+
+{% endif %}
+
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
-{% endblock %}
-{% block title %}Feed{% endblock %}
+{% endblock %} {% block title %}Feed{% endblock %}
