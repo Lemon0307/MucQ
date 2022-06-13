@@ -40,11 +40,12 @@
         >Sign Up</a
       >
       {% endif %}
+      <li>
+        <img
+          src="{{ url_for('static', filename='menu.jpg') }}"
+          class="nav-button"
+          onclick="togglemenu()"/>
+      </li>
     </nav>
   </div>
-  <img
-    src="{{ url_for('static', filename='menu.jpg') }}"
-    class="nav-button"
-    onclick="togglemenu()"
-  />
 </div>

@@ -3,6 +3,9 @@ from flask_login import current_user
 from mucq.main_folder.forms import SearchForm, FeedbackForm
 import datetime
 
+from flask_wtf.csrf import CSRFProtect
+
+csrf = CSRFProtect()
 main = Blueprint('main', __name__)
 
 
@@ -52,8 +55,8 @@ def helpcenter():
 def tos():
     return render_template('/main/tos.html', title='Terms of Service')
 
-
 @main.route('/search', methods=['POST'])
+@csrf.exempt
 def search():
     from mucq.models import Post
     form = SearchForm()
