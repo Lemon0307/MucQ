@@ -19,6 +19,7 @@
   <br />
   <button class="btn">
     <form action="{{ url_for('users.update_profile') }}" method="POST">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
       <input class="btn" type="submit" value="Update Profile" />
     </form>
   </button>
