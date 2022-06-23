@@ -32,6 +32,21 @@
       {% else %} {{ form.description(class="form-control") }} {% endif %}
     </div>
   </div>
+  <div class="form-group">
+    <h1 style="color: #3498db">{{ legend }}</h1>
+    <div class="form-group">
+      {{ form.product_price.label(class="form-control-label") }}
+      <br />
+      {% if form.product_price.errors %} {{ form.content(class="form-control
+      is-invalid") }}
+      <div class="invalid-feedback">
+        {% for errors in form.product_price.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.product_price(class="form-control") }} {% endif %}
+    </div>
+  </div>
   <br />
   <div class="form-group">{{ form.submit(class="btn") }}</div>
   <br />

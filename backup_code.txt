@@ -107,3 +107,6 @@ Hello! This is the first text of MucQ! Hope you enjoy this bran new update!
   </ul>
 </nav>
 
+product image models.py
+
+product_image = db.Column(db.String(20), unique=False, nullable=True)

@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(60), nullable=False)
     about_me = db.Column(db.Text, nullable=True)
     posts = db.relationship('Post', backref='author', lazy=True)
+    products = db.relationship('Products', backref='author', lazy=True)
 
     def get_reset_token(self, expires_sec=300):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -45,7 +46,7 @@ class Post(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False,
                             default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)\
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
 
     def __repr__(self):
@@ -78,13 +79,15 @@ class Blog(db.Model):
 
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    product_image = db.Column(db.String(20), unique=False, nullable=False)
+    #product_image = db.Column(db.String(20), unique=False, nullable=True, null=True)
     product_name = db.Column(db.String(40), nullable=False)
+    product_price = db.Column(db.Numeric(10,2), nullable=False)
     description = db.Column(db.Text, nullable=False)
-    likes = db.Column(db.Integer, nullable=False)
+    #likes = db.Column(db.Integer, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):
-        return f"POST('{self.product_name}', '{self.description}')"
+        return f"POST('{self.product_name}', '{self.description}', '{self.product_price}')"
 
 def init_db():
-    db.create_all()
+        db.create_all()
