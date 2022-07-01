@@ -8,12 +8,44 @@
       /></a>
     </div>
     <nav>
+      <div class="menu">
+        <nav class="menubar" id="menu">
+              <a
+                class="navbar-text"
+                id="menuhome"
+                href="{{ url_for('main.index') }}"
+                alink="black"
+                vlink="black"
+                >Feed</a
+              >
+              <a
+                class="navbar-text"
+                id="menuhome"
+                href="{{ url_for('products.product') }}"
+                alink="black"
+                vlink="black"
+                >Products</a
+              >
+              <a
+                class="navbar-text"
+                id="menuabout"
+                href="{{ url_for('main.about') }}"
+                alink="black"
+                vlink="black"
+                >About</a
+              >
+              <a
+                class="navbar-text"
+                id="menusupport"
+                href="{{ url_for('main.helpcenter') }}"
+                alink="black"
+                vlink="black"
+                >Support</a
+              >
+              <a href="{{ url_for('main.feedback') }}">Feedback</a>
       {% if current_user.is_authenticated %}
       <a class="navbar-text" href="{{ url_for('users.profile') }}"
-        ><img
-          class="profile-navbar"
-          src="{{ url_for('static', filename='profile_pics/' + current_user.image_file) }}"
-      /></a>
+        >My Account</a>
       <a
         class="navbar-text"
         href="{{ url_for('users.logout') }}"
@@ -44,6 +76,9 @@
           src="{{ url_for('static', filename='menu.jpg') }}"
           class="nav-button"
           onclick="togglemenu()"/>
+
+        </nav>
+      </div>
     </nav>
   </div>
 </div>

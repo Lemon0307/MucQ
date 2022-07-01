@@ -22,6 +22,7 @@ body {
 .top-bar {
   width: 100%;
   float: left;
+  
 }
 
 .navbar {
@@ -80,8 +81,6 @@ body {
 .menu {
   float: left;
   display: flex;
-  margin: 10px 0px;
-  margin-left: 10px;
   height: 100%;
 }
 
