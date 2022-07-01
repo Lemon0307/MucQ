@@ -1,0 +1,54 @@
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+<form method="POST" action="">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+  {{ form.hidden_tag() }}
+  <div class="form-group">
+    <h1 style="color: #3498db">{{ legend }}</h1>
+    <div class="form-group">
+      {{ form.product_name.label(class="form-control-label") }}
+      <br />
+      {% if form.product_name.errors %} {{ form.content(class="form-control
+      is-invalid") }}
+      <div class="invalid-feedback">
+        {% for errors in form.product_name.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.product_name(class="form-control") }} {% endif %}
+    </div>
+  </div>
+  <div class="form-group">
+    <h1 style="color: #3498db">{{ legend }}</h1>
+    <div class="form-group">
+      {{ form.description.label(class="form-control-label") }}
+      <br />
+      {% if form.description.errors %} {{ form.content(class="form-control
+      is-invalid") }}
+      <div class="invalid-feedback">
+        {% for errors in form.description.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.description(class="form-control") }} {% endif %}
+    </div>
+  </div>
+  <div class="form-group">
+    <h1 style="color: #3498db">{{ legend }}</h1>
+    <div class="form-group">
+      {{ form.product_price.label(class="form-control-label") }}
+      <br />
+      {% if form.product_price.errors %} {{ form.content(class="form-control
+      is-invalid") }}
+      <div class="invalid-feedback">
+        {% for errors in form.product_price.errors %}
+        <span>{{ error }}</span>
+        {% endfor %}
+      </div>
+      {% else %} {{ form.product_price(class="form-control") }} {% endif %}
+    </div>
+  </div>
+  <br />
+  <div class="form-group">{{ form.submit(class="btn") }}</div>
+  <br />
+</form>
+{% endblock %}

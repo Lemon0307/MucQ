@@ -1,0 +1,423 @@
+@import url("https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Podkova&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  /*font-family: "Podkova", serif;*/
+}
+
+body {
+  overflow: auto;
+  background-color: #162135;
+  font-family: "DM Sans", sans-serif;
+}
+
+/*top bar*/
+
+.top-bar {
+  width: 100%;
+  float: left;
+}
+
+.navbar {
+  width: 100%;
+  color: #04518c;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 17px;
+}
+
+.navbar a {
+  font-size: 25px;
+  text-decoration: none;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+.navbar a:hover {
+  color: grey;
+}
+
+.navbar a:active {
+  color: white;
+}
+
+.navbar a:visited {
+  color: white;
+}
+
+/*logo*/
+
+.logo {
+  width: 50px;
+  cursor: pointer;
+  margin: 30px 0;
+}
+
+/*1 button*/
+
+.nav-button {
+  cursor: pointer;
+  width: 30px;
+  display: none;
+}
+
+.nav-button div {
+  height: 4px;
+  background-color: white;
+  margin: 5px 0;
+  border-radius: 25px;
+}
+
+/*sidebar*/
+
+.menu {
+  float: left;
+  display: flex;
+  margin: 10px 0px;
+  margin-left: 10px;
+  height: 100%;
+}
+
+.menubar ul li {
+  background-color: #2c4269;
+  padding: 35px;
+  list-style: none;
+  display: flex;
+  margin-bottom: 10px;
+  border-radius: 7.5px;
+}
+
+.menubar ul li a {
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+}
+
+.menubar ul li:hover {
+  background-color: #20304d;
+}
+.menubar ul li a:hover {
+  color: grey;
+}
+
+/* Search */
+
+.search-bar {
+  display: inline;
+}
+
+/* .search-submit {
+      border-width: 0px;
+      border-radius: 20px;
+      padding: 10px;
+      font-family: 'Podkova', serif;
+      font-size: 20px;
+      background-color: #22314F;
+      color: white;
+      padding-left: 20px;
+      padding-right: 20px;
+  } */
+
+.search-bar-field {
+  padding: 10px;
+  font-size: 20px;
+  margin: 5px 15px;
+  border-radius: 15px;
+  width: 50%;
+  overflow: hidden;
+  flex: 1;
+}
+
+/* 1 */
+
+.content {
+  border-radius: 7.5px;
+  background-color: #2c4269;
+  color: white;
+  padding: 40px;
+  font-size: 20px;
+  height: 100%;
+  margin: 10px;
+  overflow: hidden;
+  margin-top:10px;
+  flex: 1;
+  text-align: center;
+}
+
+.form-control {
+  padding: 10px;
+}
+
+.form-control-label {
+  text-align: right;
+}
+
+.alert-danger {
+  display: inline-flex;
+  padding: 20px;
+  background-color: crimson;
+  margin: 10px 10px;
+  padding: 20px 20px;
+  font-size: 20px;
+  border-radius: 15px;
+  font-family: "Source Code Pro", monospace;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.alert-success {
+  display: block;
+  padding: 20px 20px;
+  margin: 10px 10px;
+  background-color: #33cc33;
+  font-size: 20px;
+  border-radius: 15px;
+  font-family: "Source Code Pro", monospace;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px black;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 100%;
+}
+
+.profile-navbar {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  border-radius: 100%;
+}
+
+.profile-pic-post {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 100%;
+}
+
+.profile-div {
+  padding: 50px;
+  border-radius: 15px;
+}
+
+.profile-text {
+  color: white;
+}
+
+.post {
+  background-color: #2c4269;
+  margin-bottom: 10px;
+  border-radius: 10px;
+}
+
+.post-username {
+  text-decoration: none;
+  color: white;
+}
+.post-username:hover {
+  color: grey;
+}
+.products {
+  padding: 25px;
+  display: inline-block;
+  width: 300px;
+  height: 300px;
+  margin: 25px 25px;
+  background-color: #22314f;
+  border: 100px black;
+  border-radius: 5px;
+  overflow-wrap: break-word;
+}
+
+.post-main {
+  padding: 25px;
+}
+
+.post-text {
+  color: white;
+  font-size: 25px;
+  overflow: hidden;
+}
+
+.profile-pic-error {
+  text-align: left;
+  color: crimson;
+}
+
+.btn {
+  border-width: 0px;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: "Podkova", serif;
+  font-size: 20px;
+  background-color: #22314f;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  color: grey;
+}
+
+.btn-2 {
+  border-width: 0px;
+  background-color: #2c4269;
+}
+
+.btn-3 {
+  border-width: 0px;
+  border-radius: 20px;
+  padding: 10px;
+  font-family: "Podkova", serif;
+  font-size: 20px;
+  background-color: #3b4d70;
+  color: white;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-decoration: none;
+}
+/* delete btn for products*/
+.btn-2-dl{
+  border-width: 0px;
+  background-color: #22314f;
+}
+.btn-danger {
+  background-color: crimson;
+}
+
+.line-1 {
+  border-color: black;
+}
+
+textarea {
+  resize: none;
+  color: black;
+  background-color: #f4f4f4;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+  height: 50px;
+}
+
+@media only screen and (max-width: 700px) {
+  .btn {
+    align-items: center;
+  }
+  .btn-2 {
+    align-items: center;
+  }
+  .btn-3 {
+    align-items: center;
+  }
+  .menubar ul {
+    width: 100%;
+    background: #22314f;
+    padding: 8px 8px;
+    position: absolute;
+    top: 99px;
+    right: 0;
+    z-index: 2;
+  }
+
+  .menubar ul li {
+    display: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .menubar ul li a {
+    color: white;
+  }
+
+
+  .nav-button {
+    display: block;
+  }
+
+  /*#menu {
+    overflow: hidden;
+    transition: 0.5s;
+  }*/
+
+  .profile-text {
+    font-size: 15px;
+    text-align: left;
+    text-size-adjust: auto;
+  }
+
+  .profile-pic {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.eng_button {
+  text-decoration: none;
+  color: white;
+}
+
+.eng_button:hover {
+  color: grey;
+}
+
+.chi_button {
+  text-decoration: none;
+  color: white;
+}
+
+.chi_button:hover {
+  color: grey;
+}
+/* support */
+.contact-us {
+  background-color: #22314f;
+  font-family: "Source Code Pro", monospace;
+  font-size: 20px;
+  border: none;
+  border-radius: 10px;
+  width: 500px;
+  height: 60px;
+  text-decoration: none;
+  color: white;
+}
+.contact-us:hover {
+  color: grey;
+}
+
+.create-post-div {
+  display: inline-block;
+}
+
+.chat {
+  background-color: #22314f;
+  border-width: 0px;
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+  text-align: left;
+}
+small {
+  color: white;
+}
+
+.container {
+  float: left;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}

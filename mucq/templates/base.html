@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+    {% block head %}{% endblock %}
+    <title>{% block title %}{% endblock %}</title>
+  </head>
+  <body>
+    <!--<div class="#">
+      <a
+        id="eng-button"
+        language="english"
+        class="eng_button"
+        href="#eng"
+        data-reload
+        >English</a
+      >
+      <a
+        id="chi-button"
+        language="t_chinese"
+        class="chi_button"
+        href="#chi"
+        data-reload
+        >繁體中文</a
+      >
+    </div>-->
+    {% include 'navbar.html' %}
+    <br>
+    <div class="container">
+      {% include 'sidebar.html' %}
+      <div class="content">
+        <div class="search-bar">
+          <form method="POST" action="{{ url_for('main.search') }}">
+            <input class="search-bar-field" type="text" placeholder="Search for an item..." name="searched">
+            <button class="btn" type="submit">Search</button>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          </form>
+        </div>
+        {% with messages =
+          get_flashed_messages(with_categories=true) %} {% if messages %} {% for
+          category, message in messages %}
+          <div class="alert-{{ category }}">{{ message }}</div>
+          {% endfor %} {% endif %} {% endwith %}
+        {% block body %}{% endblock %}
+        <br />
+        <div class="footer">
+        </div>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  </body>
+</html>

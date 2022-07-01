@@ -1,0 +1,24 @@
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+<button class="btn"><a class="btn" href="{{ url_for('products.create_product') }}">Create Product</a></button>
+<br>
+<h1>
+    Trending
+</h1>
+{% for product in products %}
+<div class="products">
+    <h1>{{product.product_name}}</h1>
+    <p>{{product.description}}</p>
+    <h1>${{product.product_price}}</h1>
+    <form action="", method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <button class="like-btn">
+            <a>Like</a>
+        </button>
+    </form>
+    {% include 'products/product_tools.html' %}
+</div>
+{% endfor %}
+<h1>
+    Recommended for you
+</h1>
+{% endblock %}
