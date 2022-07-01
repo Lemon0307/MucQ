@@ -11,7 +11,7 @@ products = Blueprint('products', __name__)
 def product():
     from mucq.products_folder.forms import ProductsForm
     products = Products.query.all()
-    like = 
+    like = 0
     return render_template('products/products.html', products=products)
 
 

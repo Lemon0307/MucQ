@@ -17,6 +17,7 @@
           >{{ post.author.username }}</a
         >: {{ post.content }}
       </p>
+    </div>
       <a class="profile-pic-post" href="#"
         ><img
           class="profile-pic-post"
@@ -26,7 +27,6 @@
       /></a>
       <small>{{ post.date_posted.strftime('(Posted at %Y-%m-%d)') }}</small>
       {% include '/posts/post_tools.html' %}
-    </div>
   </div>
   {% endfor %}
   <br />

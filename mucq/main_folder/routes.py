@@ -55,6 +55,7 @@ def helpcenter():
 def tos():
     return render_template('/main/tos.html', title='Terms of Service')
 
+#debug here
 @main.route('/search', methods=['POST'])
 @csrf.exempt
 def search():
@@ -65,7 +66,7 @@ def search():
         SearchForm.searched = form.searched.data
         posts = posts.filter(Post.content.like(
             '%' + SearchForm.searched + '%'))
-        posts = posts.order_by(Post.title).all()
+        posts = posts.order_by(Post.content).all()
         return render_template('/main/search.html', form=form, searched=SearchForm.searched, posts=posts)
     return render_template('/main/search.html', form=form, searched=SearchForm.searched, posts=posts)
 

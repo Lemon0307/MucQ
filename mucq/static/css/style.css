@@ -3,16 +3,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Podkova&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+HK&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&display=swap");
 
 * {
   margin: 0px;
   padding: 0px;
-  font-family: "Podkova", serif;
+  /*font-family: "Podkova", serif;*/
 }
 
 body {
   overflow: auto;
   background-color: #162135;
+  font-family: "DM Sans", sans-serif;
 }
 
 /*top bar*/
@@ -144,7 +146,9 @@ body {
   height: 100%;
   margin: 10px;
   overflow: hidden;
+  margin-top:10px;
   flex: 1;
+  text-align: center;
 }
 
 .form-control {
@@ -273,7 +277,7 @@ body {
 
 .btn-2 {
   border-width: 0px;
-  background-color: #22314f;
+  background-color: #2c4269;
 }
 
 .btn-3 {
@@ -288,7 +292,11 @@ body {
   padding-right: 20px;
   text-decoration: none;
 }
-
+/* delete btn for products*/
+.btn-2-dl{
+  border-width: 0px;
+  background-color: #22314f;
+}
 .btn-danger {
   background-color: crimson;
 }
@@ -341,10 +349,10 @@ textarea {
     display: block;
   }
 
-  #menu {
+  /*#menu {
     overflow: hidden;
     transition: 0.5s;
-  }
+  }*/
 
   .profile-text {
     font-size: 15px;
@@ -401,6 +409,7 @@ textarea {
   border-radius: 20px;
   padding: 20px;
   margin: 20px;
+  text-align: left;
 }
 small {
   color: white;

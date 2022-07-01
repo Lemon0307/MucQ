@@ -1,6 +1,6 @@
 {% if product.author == current_user %}
   <div>
-    <button class="btn-2">
+    <button class="btn-2-dl">
       <form
         action="{{ url_for('products.delete_product', product_id=product.id) }}"
         method="POST"

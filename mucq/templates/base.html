@@ -37,8 +37,7 @@
       <div class="content">
         <div class="search-bar">
           <form method="POST" action="{{ url_for('main.search') }}">
-            <input class="search-bar-field" type="text" placeholder="Search for
-            an item..." name="searched">
+            <input class="search-bar-field" type="text" placeholder="Search for an item..." name="searched">
             <button class="btn" type="submit">Search</button>
             <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
           </form>
