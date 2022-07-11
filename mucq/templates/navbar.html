@@ -1,86 +1,65 @@
-<div class="top-bar">
+<div class="top-bar" id="topbar">
   <div class="navbar" id="navbar">
-    <div class="logo-wrapped">
-      <a href="{{ url_for('main.index') }}"
-        ><img
-          class="logo"
-          src="{{ url_for('static', filename='mucq-logo.png') }}"
-      /></a>
+    <button class="nav-button-2" onclick="togglesidebar()">
+      <div>
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </div>
+    </button>
+    <div class="search-bar">
+      <form method="POST" action="{{ url_for('main.search') }}">
+        <button class="s-btn" type="submit">
+          <img
+            class="logo"
+            src="{{ url_for('static', filename='mucq-logo.png') }}"
+          />
+        </button>
+        <input
+          class="search-bar-field"
+          type="text"
+          placeholder="Search for an item..."
+          name="searched"
+        />
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+      </form>
     </div>
     <nav>
-      <div class="menu">
-        <nav class="menubar" id="menu">
-              <a
-                class="navbar-text"
-                id="menuhome"
-                href="{{ url_for('main.index') }}"
-                alink="black"
-                vlink="black"
-                >Feed</a
-              >
-              <a
-                class="navbar-text"
-                id="menuhome"
-                href="{{ url_for('products.product') }}"
-                alink="black"
-                vlink="black"
-                >Products</a
-              >
-              <a
-                class="navbar-text"
-                id="menuabout"
-                href="{{ url_for('main.about') }}"
-                alink="black"
-                vlink="black"
-                >About</a
-              >
-              <a
-                class="navbar-text"
-                id="menusupport"
-                href="{{ url_for('main.helpcenter') }}"
-                alink="black"
-                vlink="black"
-                >Support</a
-              >
-              <a href="{{ url_for('main.feedback') }}">Feedback</a>
-      {% if current_user.is_authenticated %}
-      <a class="navbar-text" href="{{ url_for('users.profile') }}"
-        >My Account</a>
-      <a
-        class="navbar-text"
-        href="{{ url_for('users.logout') }}"
-        alink="white"
-        vlink="white"
-        id="logout"
-        >Logout</a
-      >
-      {% else %}
-      <a
-        class="navbar-text"
-        href="{{ url_for('users.login') }}"
-        alink="white"
-        vlink="white"
-        id="login"
-        >Login</a
-      >
-      <a
-        class="navbar-text"
-        href="{{ url_for('users.signup') }}"
-        alink="white"
-        vlink="white"
-        id="sign_up"
-        >Sign Up</a
-      >
-      {% endif %}
-        <img
-          src="{{ url_for('static', filename='menu.jpg') }}"
-          class="nav-button"
-          onclick="togglemenu()"/>
-
+      <div class="nav-1">
+        <nav class="navbar-1" id="nav">
+          {% if current_user.is_authenticated %}
+          <a class="navbar-text" href="{{ url_for('users.profile') }}"
+            >My Account</a
+          >
+          <a
+            class="navbar-text"
+            href="{{ url_for('users.logout') }}"
+            alink="white"
+            vlink="white"
+            id="logout"
+            >Logout</a
+          >
+          {% else %}
+          <a
+            class="navbar-text"
+            href="{{ url_for('users.login') }}"
+            alink="white"
+            vlink="white"
+            id="login"
+            >Login</a
+          >
+          <a
+            class="navbar-text"
+            href="{{ url_for('users.signup') }}"
+            alink="white"
+            vlink="white"
+            id="sign_up"
+            >Sign Up</a
+          >
+          {% endif %}
         </nav>
       </div>
     </nav>
   </div>
 </div>
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-

@@ -1,8 +1,15 @@
 /* menu */
 
 var menuList = document.getElementById('menu');
+var sideList = document.getElementById('menu');
+var content = document.getElementById('content');
+var topbar = document.getElementById('topbar');
 
 menuList.style.maxHeight = "0px";
+sideList.style.display = "none";
+sideList.style.opacity = "1";
+content.style.opacity = "1";
+topbar.style.opacity = "1";
 
 function togglemenu() {
   if (menuList.style.maxHeight == "0px") {
@@ -10,6 +17,21 @@ function togglemenu() {
   }
   else {
     menuList.style.maxHeight = "0px";
+  }
+}
+
+function togglesidebar() {
+  if (sideList.style.display == "none") {
+    sideList.style.display = "flex";
+    sideList.style.opacity = "1";
+    content.style.opacity = "0.5";
+    topbar.style.opacity = "0.5";
+  }
+  else {
+    sideList.style.display = "none";
+    sideList.style.opacity = "1";
+    content.style.opacity = "1";
+    topbar.style.opacity = "1";
   }
 }
 
