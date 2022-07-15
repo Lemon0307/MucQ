@@ -37,8 +37,8 @@
           src="{{ url_for('static', filename='Hamburger_icon.svg.png') }}"
         />
       </button>
-      <div class="search-bar">
         <form method="POST" action="{{ url_for('main.search') }}">
+          <div class="search-bar">
           <input
             class="search-bar"
             type="text"
@@ -52,9 +52,9 @@
               alt=""
             />
           </button>
+          </div>
           <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
         </form>
-      </div>
       <nav>
         <nav class="login-sign-up" id="nav">
           {% if current_user.is_authenticated %}
@@ -92,6 +92,7 @@
     </div>
     <div class="sidebar" id="sidebar">
       <ul>
+        <h1 class="menu">Menu</h1>
         <li>
           <a
             class="#"

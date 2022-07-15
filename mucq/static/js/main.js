@@ -3,18 +3,23 @@
 const sidebar = document.getElementById('sidebar');
 const topbar = document.getElementById('topbar');
 const content = document.getElementById('content');
+const body = document.body
 sidebar.style.display = "none";
 sidebar.style.opacity = 1;
+
+body.style.overflow = "auto";
 
 function toggleSideBar() {
     if (sidebar.style.display == "none") {
         sidebar.style.display = "flex";
         topbar.style.opacity = 0.5;
         content.style.opacity = 0.5;
+        body.style.overflow = "hidden";
    } else {
     sidebar.style.display = "none";
     topbar.style.opacity = 1;
     content.style.opacity = 1;
+    body.style.overflow = "auto";
    }
 }
 
