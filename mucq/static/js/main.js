@@ -1,38 +1,21 @@
-/* menu */
+/* Sidebar */
 
-var menuList = document.getElementById('menu');
-var sideList = document.getElementById('menu');
-var content = document.getElementById('content');
-var topbar = document.getElementById('topbar');
+const sidebar = document.getElementById('sidebar');
+const topbar = document.getElementById('topbar');
+const content = document.getElementById('content');
+sidebar.style.display = "none";
+sidebar.style.opacity = 1;
 
-menuList.style.maxHeight = "0px";
-sideList.style.display = "none";
-sideList.style.opacity = "1";
-content.style.opacity = "1";
-topbar.style.opacity = "1";
-
-function togglemenu() {
-  if (menuList.style.maxHeight == "0px") {
-    menuList.style.maxHeight = "130px";
-  }
-  else {
-    menuList.style.maxHeight = "0px";
-  }
-}
-
-function togglesidebar() {
-  if (sideList.style.display == "none") {
-    sideList.style.display = "flex";
-    sideList.style.opacity = "1";
-    content.style.opacity = "0.5";
-    topbar.style.opacity = "0.5";
-  }
-  else {
-    sideList.style.display = "none";
-    sideList.style.opacity = "1";
-    content.style.opacity = "1";
-    topbar.style.opacity = "1";
-  }
+function toggleSideBar() {
+    if (sidebar.style.display == "none") {
+        sidebar.style.display = "flex";
+        topbar.style.opacity = 0.5;
+        content.style.opacity = 0.5;
+   } else {
+    sidebar.style.display = "none";
+    topbar.style.opacity = 1;
+    content.style.opacity = 1;
+   }
 }
 
 /* languages */

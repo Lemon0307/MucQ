@@ -1,11 +1,9 @@
 {% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
 <!-- Header -->
-<h1 id="mucq_welcome" class="mucq_welcome" lang="zh-Hant">Welcome to MucQ!</h1>
-<br />
-<p id="mucq_welcome_message" class="mucq_welcome_message" lang="zh-Hant">
-  Welcome to MucQ! See what's new!
-</p>
-<br />
+<h1 id="mucq_welcome" class="mucq_welcome" lang="zh-Hant">Welcome to MucQ! See what's new!</h1>
+<!-- Create Posts -->
+{% include '/posts/main_create_post.html' %}
+<!-- Create Posts -->
 
 <!-- All Posts -->
 <div class="chat">
@@ -46,10 +44,6 @@
 <!-- All Posts -->
 
 {% if current_user.is_authenticated %}
-
-<!-- Create Posts -->
-{% include '/posts/main_create_post.html' %}
-<!-- Create Posts -->
 
 {% else %}
 

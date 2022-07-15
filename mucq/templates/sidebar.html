@@ -1,49 +1,45 @@
-<div class="menu">
-    <nav class="menubar" id="menu">
-      <ul>
-        <li>
-          <a
-            class="#"
-            id="menuhome"
-            href="{{ url_for('main.index') }}"
-            alink="black"
-            vlink="black"
-            >Feed</a
-          >
-        </li>
-        <li>
-          <a
-            class="#"
-            id="menuhome"
-            href="{{ url_for('products.product') }}"
-            alink="black"
-            vlink="black"
-            >Products</a
-          >
-        </li>
-        <li>
-          <a
-            class="#"
-            id="menuabout"
-            href="{{ url_for('main.about') }}"
-            alink="black"
-            vlink="black"
-            >About</a
-          >
-        </li>
-        <li>
-          <a
-            class="#"
-            id="menusupport"
-            href="{{ url_for('main.helpcenter') }}"
-            alink="black"
-            vlink="black"
-            >Support</a
-          >
-        </li>
-        <li>
-          <a href="{{ url_for('main.feedback') }}">Feedback</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
+<ul>
+  <li>
+    <a
+      class="#"
+      id="menuhome"
+      href="{{ url_for('main.index') }}"
+      alink="black"
+      vlink="black"
+      >Feed</a
+    >
+  </li>
+  <li>
+    <a
+      class="#"
+      id="menuhome"
+      href="{{ url_for('products.product') }}"
+      alink="black"
+      vlink="black"
+      >Products</a
+    >
+  </li>
+  <li>
+    <a
+      class="#"
+      id="menuabout"
+      href="{{ url_for('main.about') }}"
+      alink="black"
+      vlink="black"
+      >About</a
+    >
+  </li>
+  <li>
+    <a
+      class="#"
+      id="menusupport"
+      href="{{ url_for('main.helpcenter') }}"
+      alink="black"
+      vlink="black"
+      >Support</a
+    >
+  </li>
+  <li>
+    <a href="{{ url_for('main.feedback') }}">Feedback</a>
+  </li>
+</ul>

@@ -30,10 +30,115 @@
         >繁體中文</a
       >
     </div>-->
-    {% include 'navbar.html' %}
+    <div class="top-bar" id="topbar">
+      <button class="sidebar-button" id="sidebar_button" onclick="toggleSideBar()">
+        <img
+          class="sidebar-image"
+          src="{{ url_for('static', filename='Hamburger_icon.svg.png') }}"
+        />
+      </button>
+      <div class="search-bar">
+        <form method="POST" action="{{ url_for('main.search') }}">
+          <input
+            class="search-bar"
+            type="text"
+            placeholder="Search for an item..."
+            name="searched"
+          />
+          <button class="search-submit-button" type="submit">
+            <img
+              src="{{ url_for('static', filename='mucq-logo.png') }}"
+              class="logo"
+              alt=""
+            />
+          </button>
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        </form>
+      </div>
+      <nav>
+        <nav class="login-sign-up" id="nav">
+          {% if current_user.is_authenticated %}
+          <a class="navbar-text" href="{{ url_for('users.profile') }}"
+            >My Account</a
+          >
+          <a
+            class="logout"
+            href="{{ url_for('users.logout') }}"
+            alink="white"
+            vlink="white"
+            id="logout"
+            >Logout</a
+          >
+          {% else %}
+          <a
+            class="login"
+            href="{{ url_for('users.login') }}"
+            alink="white"
+            vlink="white"
+            id="login"
+            >Login</a
+          >
+          <a
+            class="signup"
+            href="{{ url_for('users.signup') }}"
+            alink="white"
+            vlink="white"
+            id="sign_up"
+            >Sign Up</a
+          >
+          {% endif %}
+        </nav>
+      </nav>
+    </div>
+    <div class="sidebar" id="sidebar">
+      <ul>
+        <li>
+          <a
+            class="#"
+            id="menuhome"
+            href="{{ url_for('main.index') }}"
+            alink="black"
+            vlink="black"
+            >Feed</a
+          >
+        </li>
+        <li>
+          <a
+            class="#"
+            id="menuhome"
+            href="{{ url_for('products.product') }}"
+            alink="black"
+            vlink="black"
+            >Products</a
+          >
+        </li>
+        <li>
+          <a
+            class="#"
+            id="menuabout"
+            href="{{ url_for('main.about') }}"
+            alink="black"
+            vlink="black"
+            >About</a
+          >
+        </li>
+        <li>
+          <a
+            class="#"
+            id="menusupport"
+            href="{{ url_for('main.helpcenter') }}"
+            alink="black"
+            vlink="black"
+            >Support</a
+          >
+        </li>
+        <li>
+          <a href="{{ url_for('main.feedback') }}">Feedback</a>
+        </li>
+      </ul>
+    </div>
     <br />
     <div class="container">
-      {% include 'sidebar.html' %}
       <div class="content" id="content">
         {% with messages = get_flashed_messages(with_categories=true) %} {% if
         messages %} {% for category, message in messages %}
