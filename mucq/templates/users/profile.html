@@ -16,7 +16,6 @@
   </h2>
   <p class="user-label-profile profile-text">{{ current_user.email }}</p>
   <!-- <p class="user-label-profile profile-text">{{ current_user.about_me }}</p> -->
-  <br />
   <button class="btn">
     <form action="{{ url_for('users.update_profile') }}" method="POST">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>

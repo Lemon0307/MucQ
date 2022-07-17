@@ -38,6 +38,7 @@
         />
       </button>
         <form method="POST" action="{{ url_for('main.search') }}">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
           <div class="search-bar">
           <input
             class="search-bar"
@@ -53,7 +54,6 @@
             />
           </button>
           </div>
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
         </form>
       <nav>
         <nav class="login-sign-up" id="nav">
@@ -102,6 +102,15 @@
             vlink="black"
             >Feed</a
           >
+        </li>
+        <li>
+          <a
+            class="#"
+            id="menuhome"
+            href="{{ url_for('products.product') }}"
+            alink="black"
+            vlink="black"
+            >Games</a>
         </li>
         <li>
           <a

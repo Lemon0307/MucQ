@@ -21,7 +21,7 @@ def index():
     import mucq.posts_folder.forms
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(
-        Post.date_posted.desc()).paginate(page=page, per_page=7)
+        Post.date_posted.desc())#.paginate(page=page, per_page=7)
     from mucq.__init__ import db
     form = mucq.posts_folder.forms.PostForm()
     if form.validate_on_submit():
