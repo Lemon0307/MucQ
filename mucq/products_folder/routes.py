@@ -15,7 +15,7 @@ products = Blueprint('products', __name__)
 @products.route('/products')
 def product():
     from mucq.products_folder.forms import ProductsForm
-    products = Products.query.all()
+    products = Products.query.order_by(Products.date_posted.desc())
     like = 0 
     return render_template('products/products.html', products=products)
 
