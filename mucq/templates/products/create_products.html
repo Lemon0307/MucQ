@@ -52,7 +52,7 @@
     <div class="form-group">
       {{ form.picture.label(class="form-control-label") }}
       <br />
-      {% if form.picture.errors %} {{ form.content(class="form-control
+      {% if form.picture.errors %} {{ form.picture(class="form-control
       is-invalid") }}
       <div class="invalid-feedback">
         {% for errors in form.picture.errors %}
