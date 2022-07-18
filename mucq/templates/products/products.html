@@ -38,7 +38,19 @@
         <a>Like</a>
       </button>
     </form>
-    {% include 'products/product_tools.html' %}
+    {% if product.author == current_user %}
+    <div>
+      <button class="btn-2-dl">
+        <form
+          action="{{ url_for('products.delete_product', product_id=product.id) }}"
+          method="POST"
+        >
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <input class="btn btn-danger" type="submit" value="Delete" />
+        </form>
+      </button>
+    </div>
+    {% endif %}
   </div>
   {% endfor %}
 </div>
