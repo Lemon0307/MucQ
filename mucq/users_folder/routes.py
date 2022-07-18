@@ -45,6 +45,7 @@ def login():
             return redirect(url_for('main.index'))
         elif user.password != form.password.data or user.email != form.email.data:
             flash("Login failed. Please enter the correct details", 'danger')
+            return redirect(url_for('users.login'))
         
     return render_template("/users/login.html", form=form)
 
