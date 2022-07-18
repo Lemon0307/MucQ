@@ -240,6 +240,19 @@ body {
     overflow: hidden;
   }
 
+  .products-item a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .products-item a:active {
+    color: white;
+  }
+
+  .products-item a:hover {
+    color: grey;
+  }
+
   .product-description {
     height: 80px;
     overflow-y: scroll;
