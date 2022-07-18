@@ -107,7 +107,7 @@ body {
     margin-right: 5px;
 }
 
-/* Create Post */
+/* Create */
 
 .create-post-div {
     box-sizing: border-box;
@@ -206,6 +206,7 @@ body {
   }
 
   .chat {
+    display: block;
     border-radius: 10px;
     height: 600px;
     background-color: #2c4269;
@@ -223,17 +224,33 @@ body {
   .post-username:hover {
     color: grey;
   }
+
+  /* Products */
   .products-item {
+    font-size: 1.5vh;
     padding: 25px;
     display: inline-block;
     width: 300px;
-    height: 300px;
-    margin: 25px 25px;
+    height: 500px;
+    margin: 1.5vw 1.5vw;
     background-color: #22314f;
     border: 100px black;
     border-radius: 5px;
     overflow-wrap: break-word;
+    overflow: hidden;
   }
+
+  .product-description {
+    height: 80px;
+    overflow-y: scroll;
+  }
+  
+  .product-image {
+    width: 200px;
+    height: 200px;
+  }
+  
+  /* Posts */
   
   .post-main {
     padding: 25px;

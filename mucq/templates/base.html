@@ -37,24 +37,7 @@
           src="{{ url_for('static', filename='Hamburger_icon.svg.png') }}"
         />
       </button>
-        <form method="POST" action="{{ url_for('main.search') }}">
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-          <div class="search-bar">
-          <input
-            class="search-bar"
-            type="text"
-            placeholder="Search for an item..."
-            name="searched"
-          />
-          <button class="search-submit-button" type="submit">
-            <img
-              src="{{ url_for('static', filename='mucq-logo.png') }}"
-              class="logo"
-              alt=""
-            />
-          </button>
-          </div>
-        </form>
+        {% block search %}{% endblock %}
       <nav>
         <nav class="login-sign-up" id="nav">
           {% if current_user.is_authenticated %}

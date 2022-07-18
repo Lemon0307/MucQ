@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block head %} {% endblock %}
+{% block search %}
+<form method="POST" action="{{ url_for('products.search_product') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="search-bar">
+    <input
+      class="search-bar"
+      type="text"
+      placeholder="Search for an item..."
+      name="searched"
+    />
+    <button class="search-submit-button" type="submit">
+      <img
+        src="{{ url_for('static', filename='mucq-logo.png') }}"
+        class="logo"
+        alt=""
+      />
+    </button>
+  </div>
+</form>
+{% endblock %}
+{% block body %} 
+  {%
+    for post in posts %}
+    <div class="products-item">
+      <h1>{{product.product_name}}</h1>
+      <img src="{{ url_for('static', filename='product_image/cup.jpg') }}" class="product-image">
+      <p class="product-description">{{product.author.description}}</p>
+      <h1>${{product.author.product_price}}</h1>
+      <form action="" , method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <button class="like-btn">
+          <a>Like</a>
+        </button>
+      </form>
+      {% include 'products/product_tools.html' %}
+    </div>
+    {% endfor %}
+<!-- make pagination here -->
+{% endblock %}

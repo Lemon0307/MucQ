@@ -1,15 +1,34 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
+{% extends 'base.html' %} {% block head %} {% endblock %} {% block search %}
+<form method="POST" action="{{ url_for('main.search_post') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="search-bar">
+    <input
+      class="search-bar"
+      type="text"
+      placeholder="Search for an item..."
+      name="searched"
+    />
+    <button class="search-submit-button" type="submit">
+      <img
+        src="{{ url_for('static', filename='mucq-logo.png') }}"
+        class="logo"
+        alt=""
+      />
+    </button>
+  </div>
+</form>
+{% endblock %} {% block body %}
 <!-- Header -->
-<h1 id="mucq_welcome" class="mucq_welcome" lang="zh-Hant">Welcome to MucQ! See what's new!</h1>
+<h1 id="mucq_welcome" class="mucq_welcome" lang="zh-Hant">
+  Welcome to MucQ! See what's new!
+</h1>
 <!-- Create Posts -->
-{% if current_user.is_authenticated %}
-{% include '/posts/main_create_post.html' %}
-{% else %}
-{% endif %}
+{% if current_user.is_authenticated %} {% include '/posts/main_create_post.html'
+%} {% else %} {% endif %}
 <!-- Create Posts -->
 
 <!-- All Posts -->
-<div class="chat" style="overflow:scroll">
+<div class="chat" style="overflow-y: scroll">
   {% for post in posts %}
   <div class="post">
     <div class="post-main">
@@ -29,13 +48,12 @@
       {% include '/posts/post_tools.html' %}
     </div>
   </div>
+  <hr>
   {% endfor %}
 </div>
 <!-- All Posts -->
 
-{% if current_user.is_authenticated %}
-
-{% else %}
+{% if current_user.is_authenticated %} {% else %}
 
 <!-- Login Required -->
 <p id="loginReminder" style="color: #7383a6; text-align: center">

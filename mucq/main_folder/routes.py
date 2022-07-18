@@ -56,9 +56,9 @@ def tos():
     return render_template('/main/tos.html', title='Terms of Service')
 
 #debug here
-@main.route('/search', methods=['POST'])
+@main.route('/search_post', methods=['POST'])
 @csrf.exempt
-def search():
+def search_post():
     from mucq.models import Post
     form = SearchForm()
     posts = Post.query
@@ -67,9 +67,8 @@ def search():
         posts = posts.filter(Post.content.like(
             '%' + SearchForm.searched + '%'))
         posts = posts.order_by(Post.content).all()
-        return render_template('/main/search.html', form=form, searched=SearchForm.searched, posts=posts)
-    return render_template('/main/search.html', form=form, searched=SearchForm.searched, posts=posts)
-
+        return render_template('/main/search_post.html', form=form, searched=SearchForm.searched, posts=posts)
+    return render_template('/main/search_post.html', form=form, searched=SearchForm.searched, posts=posts)
 
 @main.route('/feedback', methods=['GET', 'POST'])
 def feedback():

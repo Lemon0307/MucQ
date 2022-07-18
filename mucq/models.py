@@ -79,7 +79,8 @@ class Blog(db.Model):
 
 class Products(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    #product_image = db.Column(db.String(20), unique=False, nullable=True, null=True)
+    image_file = db.Column(db.String(20), nullable=False,
+                           default='default.jpg')
     product_name = db.Column(db.String(40), nullable=False)
     product_price = db.Column(db.Numeric(10,2), nullable=False)
     description = db.Column(db.Text, nullable=False)
@@ -90,4 +91,5 @@ class Products(db.Model):
         return f"POST('{self.product_name}', '{self.description}', '{self.product_price}')"
 
 def init_db():
-        db.create_all()
+    db.drop_all()
+    db.create_all()

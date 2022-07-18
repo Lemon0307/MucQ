@@ -1,4 +1,25 @@
-{% extends 'base.html' %} {% block head %} {% endblock %} {% block body %} 
+{% extends 'base.html' %} {% block head %} {% endblock %}
+{% block search %}
+<form method="POST" action="{{ url_for('main.search_post') }}">
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+  <div class="search-bar">
+    <input
+      class="search-bar"
+      type="text"
+      placeholder="Search for an item..."
+      name="searched"
+    />
+    <button class="search-submit-button" type="submit">
+      <img
+        src="{{ url_for('static', filename='mucq-logo.png') }}"
+        class="logo"
+        alt=""
+      />
+    </button>
+  </div>
+</form>
+{% endblock %}
+{% block body %} 
 <div class="chat-search">
   {%
     for post in posts %}
