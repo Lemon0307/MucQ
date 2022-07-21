@@ -111,7 +111,7 @@ body {
 
 .create-post-div {
     box-sizing: border-box;
-    display: inline-block;
+    display: flex;
     width: 50%;
 }
 
@@ -263,6 +263,12 @@ body {
     height: 200px;
   }
   
+  /* Products View */
+
+.product-view-item {
+  display: flex;
+}
+
   /* Posts */
   
   .post-main {

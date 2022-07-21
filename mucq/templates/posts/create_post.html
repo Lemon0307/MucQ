@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% block head %} {% endblock %} {% block body %}
 <form method="POST" action="">
-  {{ form.hidden_tag() }}
+  <div class="create-post-div">
+    {{ form.hidden_tag() }}
   <div class="form-group">
     <h1 style="color: #3498db">{{ legend }}</h1>
     <div class="form-group create-post-textarea">
@@ -19,5 +20,7 @@
   <br />
   <div class="form-group">{{ form.submit(class="btn") }}</div>
   <br />
+  </div>
+  
 </form>
 {% endblock %}
