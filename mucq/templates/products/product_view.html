@@ -19,18 +19,32 @@
 </form>
 {% endblock %} {% block body %}
 <div class="products">
-  <div class="products-item">
+  <div class="products-item-view">
     <h1>{{product.product_name}}</h1>
     <img src="{{ url_for('static', filename='product_image/' + product.image_file) }}" class="product-image">
-    <p class="product-description">{{product.description}}</p>
+    <p class="product-description-view">{{product.description}}</p>
     <h1>${{product.product_price}}</h1>
-    <form action="" , method="POST">
-      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-      <button class="like-btn">
-        <a>Like</a>
-      </button>
-    </form>
-    {% include 'products/product_tools.html' %}
+    <div class="like-delete">
+      <form action="" , method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <button class="like-btn-view">
+          <a>Like</a>
+        </button>
+      </form>
+      {% if product.author == current_user %}
+      <div>
+        <button class="btn-2-dl-view">
+          <form
+            action="{{ url_for('products.delete_product', product_id=product.id) }}"
+            method="POST"
+          >
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input class="btn btn-danger" type="submit" value="Delete" />
+          </form>
+        </button>
+      </div>
+      {% endif %}
+    </div>
   </div>
 </div>
 {% endblock %}

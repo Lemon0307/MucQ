@@ -262,7 +262,40 @@ body {
     width: 200px;
     height: 200px;
   }
-  
+
+  .products-item-view {
+    font-size: 1.5vh;
+    padding: 25px;
+    display: inline-block;
+    width: 80vw;
+    height: 500px;
+    margin: 1.5vw 1.5vw;
+    background-color: #22314f;
+    border: 100px black;
+    border-radius: 5px;
+    overflow-wrap: break-word;
+    overflow: hidden;
+  }
+
+  .product-description-view {
+    float: right;
+    width: 50%;
+  }
+  .product-tools {
+      float: right;
+      width: 50%;
+      height: 80px;
+      overflow-y: scroll;
+  }
+  .like-delete{
+    float: right;
+  }
+
+  .like-delete .btn-2-dl-view {
+    margin-top: 1vh;
+    background-color: #22314f;
+    border: none;
+  }
   /* Posts */
   
   .post-main {
