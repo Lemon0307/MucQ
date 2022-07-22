@@ -18,22 +18,22 @@
   </div>
 </form>
 {% endblock %} {% block body %}
-<div class="products">
-  <div class="products-item-view">
+<div class="products products-view">
+  <div class="products-item products-view-item">
     <h1>{{product.product_name}}</h1>
-    <img src="{{ url_for('static', filename='product_image/' + product.image_file) }}" class="product-image">
-    <p class="product-description-view">{{product.description}}</p>
+    <img src="{{ url_for('static', filename='product_image/' + product.image_file) }}" class="product-image product-view-image">
+    <p class="product-description product-view-description">{{product.description}}</p>
     <h1>${{product.product_price}}</h1>
     <div class="like-delete">
       <form action="" , method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <button class="like-btn-view">
+        <button class="like-btn">
           <a>Like</a>
         </button>
       </form>
       {% if product.author == current_user %}
       <div>
-        <button class="btn-2-dl-view">
+        <button class="btn-2-dl">
           <form
             action="{{ url_for('products.delete_product', product_id=product.id) }}"
             method="POST"

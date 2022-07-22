@@ -111,7 +111,7 @@ body {
 
 .create-post-div {
     box-sizing: border-box;
-    display: inline-block;
+    display: flex;
     width: 50%;
 }
 
@@ -254,7 +254,7 @@ body {
   }
 
   .product-description {
-    height: 80px;
+    max-height: 80px;
     overflow-y: scroll;
   }
   
