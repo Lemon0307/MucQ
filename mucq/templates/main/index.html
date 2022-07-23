@@ -24,7 +24,10 @@
 </h1>
 <!-- Create Posts -->
 {% if current_user.is_authenticated %} {% include '/posts/main_create_post.html'
-%} {% else %} {% endif %}
+%} {% else %} <p id="loginReminder" style="color: #7383a6; text-align: center">
+  You will have to log in to join the conversation!
+</p> {% endif %}
+
 <!-- Create Posts -->
 
 <!-- All Posts -->
@@ -52,16 +55,6 @@
   {% endfor %}
 </div>
 <!-- All Posts -->
-
-{% if current_user.is_authenticated %} {% else %}
-
-<!-- Login Required -->
-<p id="loginReminder" style="color: #7383a6; text-align: center">
-  You will have to log in to join the conversation!
-</p>
-<!-- Login Required -->
-
-{% endif %}
 
 <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 {% endblock %} {% block title %}Feed{% endblock %}

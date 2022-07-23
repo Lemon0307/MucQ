@@ -1,9 +1,10 @@
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from sqlalchemy import JSON
 from mucq.__init__ import login_manager, db, create_app
 from flask import current_app
 from datetime import datetime
 from flask_login import UserMixin
-
+from json import *
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -20,6 +21,7 @@ class User(db.Model, UserMixin):
     about_me = db.Column(db.Text, nullable=True)
     posts = db.relationship('Post', backref='author', lazy=True)
     products = db.relationship('Products', backref='author', lazy=True)
+    liked_product = db.Column(JSON)
 
     def get_reset_token(self, expires_sec=300):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -86,7 +88,6 @@ class Products(db.Model):
     description = db.Column(db.Text, nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False,
                             default=datetime.utcnow)
-    #likes = db.Column(db.Integer, nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
     def __repr__(self):

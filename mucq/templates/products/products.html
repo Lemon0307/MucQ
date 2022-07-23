@@ -17,26 +17,36 @@
     </button>
   </div>
 </form>
-{% endblock %} {% block body %}
+{% endblock %} {% block body %} {% if current_user.is_authenticated %}
 <button class="btn">
   <a class="btn" href="{{ url_for('products.create_product') }}"
     >Create Product</a
   >
 </button>
 <br />
+{% else %}
+<p id="loginReminder" style="color: #7383a6; text-align: center">
+  You will have to log in to make a product post!
+</p>
+{% endif %}
 <h1>Trending</h1>
 <div class="products">
   {% for product in products %}
   <div class="products-item">
-    <a class="" href="{{ url_for('products.product_view', product_id=product.id) }}"><h1>{{product.product_name}}</h1></a>
-    <img src="{{ url_for('static', filename='product_image/' + product.image_file) }}" class="product-image">
+    <a
+      class=""
+      href="{{ url_for('products.product_view', product_id=product.id) }}"
+      ><h1>{{product.product_name}}</h1></a
+    >
+    <img
+      src="{{ url_for('static', filename='product_image/' + product.image_file) }}"
+      class="product-image"
+    />
     <p class="product-description">{{product.description}}</p>
     <h1>${{product.product_price}}</h1>
     <form action="" , method="POST">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-      <button class="like-btn">
-        <a>Like</a>
-      </button>
+        <div>{{ form.product_like() }}</div>
     </form>
     {% if product.author == current_user %}
     <div>
@@ -45,7 +55,7 @@
           action="{{ url_for('products.delete_product', product_id=product.id) }}"
           method="POST"
         >
-          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
           <input class="btn btn-danger" type="submit" value="Delete" />
         </form>
       </button>

@@ -38,15 +38,19 @@ def login():
 
     form = LoginForm()
     if form.validate_on_submit():
-        user = mucq.models.User.query.filter_by(email=form.email.data).first()
-        if user and bcrypt.check_password_hash(user.password, form.password.data):
-            login_user(user, remember=form.remember.data)
-            flash('Successfully logged in!', 'success')
-            return redirect(url_for('main.index'))
-        elif user.password != form.password.data or user.email != form.email.data:
-            flash("Login failed. Please enter the correct details", 'danger')
+        try:
+            user = mucq.models.User.query.filter_by(email=form.email.data).first()
+            if user and bcrypt.check_password_hash(user.password, form.password.data):
+                login_user(user, remember=form.remember.data)
+                flash('Successfully logged in!', 'success')
+                return redirect(url_for('main.index'))
+            elif user.password != form.password.data or user.email != form.email.data:
+                flash("Login failed. Please enter the correct details", 'danger')
+                return redirect(url_for('users.login'))
+        except:
+            flash('The email and password does not exist!', 'danger')
             return redirect(url_for('users.login'))
-        
+
     return render_template("/users/login.html", form=form)
 
 
