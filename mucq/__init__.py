@@ -8,12 +8,12 @@ from flask_mail import Mail
 from mucq.config import Config
 from flask_wtf.csrf import CsrfProtect
 from flask_migrate import Migrate
+
 mail = Mail()
 db = SQLAlchemy()
 bcrypt = Bcrypt()
 login_manager = LoginManager()
 file_path = os.path.abspath(os.path.dirname(__file__))
-
 
 def create_app(config_class=Config):
     app = Flask(__name__)

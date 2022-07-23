@@ -3,16 +3,17 @@ from click import format_filename
 from flask import render_template, url_for, redirect, request, flash, abort, Blueprint
 from flask_login.utils import login_required
 from flask_login import current_user
+from sqlalchemy import JSON
 from mucq.main_folder.forms import SearchForm
 from flask_wtf.csrf import CSRFProtect
 from mucq.products_folder.utils import save_picture
-from json import *
+import json
+from mucq.__init__ import read_json, write_json
 
 from mucq.models import Products
 
 csrf = CSRFProtect()
 products = Blueprint('products', __name__)
-
 
 @products.route('/products')
 def product():
@@ -20,6 +21,9 @@ def product():
     from mucq.models import Products
     products = Products.query.order_by(Products.date_posted.desc())
     form = ProductsForm()
+    if form.product_like == True:
+        text_file = open("likes.txt", "w")
+
     return render_template('products/products.html', products=products, form=form)
 
 
