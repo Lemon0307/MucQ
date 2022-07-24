@@ -46,7 +46,6 @@
     <h1>${{product.product_price}}</h1>
     <form action="" , method="POST">
       <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <div>{{ form.product_like() }}</div>
     </form>
     {% if product.author == current_user %}
     <div>

@@ -27,9 +27,7 @@
     <div class="like-delete">
       <form action="" , method="POST">
         <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <button class="like-btn">
-          <a>Like</a>
-        </button>
+          <div>{{ form.product_like() }}</div>
       </form>
       {% if product.author == current_user %}
       <div>

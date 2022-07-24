@@ -7,8 +7,6 @@ from sqlalchemy import JSON
 from mucq.main_folder.forms import SearchForm
 from flask_wtf.csrf import CSRFProtect
 from mucq.products_folder.utils import save_picture
-import json
-from mucq.__init__ import read_json, write_json
 
 from mucq.models import Products
 
@@ -21,17 +19,27 @@ def product():
     from mucq.models import Products
     products = Products.query.order_by(Products.date_posted.desc())
     form = ProductsForm()
-    if form.product_like == True:
-        text_file = open("likes.txt", "w")
-
     return render_template('products/products.html', products=products, form=form)
 
 
 @products.route('/products/<int:product_id>', methods=['GET', 'POST'])
 def product_view(product_id):
+    from mucq.products_folder.forms import ProductsForm
+    from mucq.models import Products, User
+    from mucq.__init__ import db
     import mucq.models
+    form = ProductsForm()
+    """liking a product
+    if form.validate_on_submit:
+        liked_product_item = f"{product_id},{True}"
+        liked_product = User(liked_products=liked_product_item, author=current_user)
+        db.session.add(liked_product)
+        db.session.commit()
+        return flash('liked product!', 'success')
+    #x = liked_product_item.split(',')
+    liking a product"""
     product = mucq.models.Products.query.get_or_404(product_id)
-    return render_template('/products/product_view.html', product=product)
+    return render_template('/products/product_view.html', product=product, form=form)
 
 
 @login_required

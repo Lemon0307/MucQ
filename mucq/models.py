@@ -21,6 +21,7 @@ class User(db.Model, UserMixin):
     about_me = db.Column(db.Text, nullable=True)
     posts = db.relationship('Post', backref='author', lazy=True)
     products = db.relationship('Products', backref='author', lazy=True)
+    liked_products = db.Column(db.String(60))
 
     def get_reset_token(self, expires_sec=300):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
