@@ -21,10 +21,7 @@ body {
 }
 
 .top-bar a:link {
-  color: white;
-}
-
-.top-bar a:active {
+  text-decoration: none;
   color: white;
 }
 
