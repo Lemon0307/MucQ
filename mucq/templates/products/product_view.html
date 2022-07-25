@@ -24,11 +24,13 @@
     <img src="{{ url_for('static', filename='product_image/' + product.image_file) }}" class="product-image product-view-image">
     <p class="product-description product-view-description">{{product.description}}</p>
     <h1>${{product.product_price}}</h1>
-    <div class="like-delete">
-      <form action="" , method="POST">
-        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
-        <div>{{ form.product_like() }}</div>
-      </form>
+    <div class="#">
+      {{ product.likes|length }}
+      {% if current_user.id in product.likes|map(attribute="author")|list %}
+      <a href="{{ url_for('products.like', product_id=product.id) }}"><i class="fa-solid fa-thumbs-up"></i></a>
+      {% else %}
+      <a href="{{ url_for('products.like', product_id=product.id) }}"><i class="fa-regular fa-thumbs-up"></i></a>
+      {% endif %}
       {% if product.author == current_user %}
       <div>
         <button class="btn-2-dl">
@@ -36,7 +38,7 @@
             action="{{ url_for('products.delete_product', product_id=product.id) }}"
             method="POST"
           >
-            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
             <input class="btn btn-danger" type="submit" value="Delete" />
           </form>
         </button>
