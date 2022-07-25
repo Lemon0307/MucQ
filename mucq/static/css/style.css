@@ -61,9 +61,15 @@ body {
   z-index: 5;
 }
 
-.sidebar-image {
-  width: 25px;
-  height: 25px;
+.sidebar-button {
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+
+.sidebar-button:hover {
+  font-size: 25px;
+  color: grey;
   cursor: pointer;
 }
 

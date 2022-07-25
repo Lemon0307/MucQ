@@ -35,16 +35,7 @@
       >
     </div>-->
     <div class="top-bar" id="topbar">
-      <button
-        class="sidebar-button"
-        id="sidebar_button"
-        onclick="toggleSideBar()"
-      >
-        <img
-          class="sidebar-image"
-          src="{{ url_for('static', filename='Hamburger_icon.svg.png') }}"
-        />
-      </button>
+        <i class="fa-solid fa-bars sidebar-button" id="sidebar_button" onclick="toggleSideBar()"></i>
       {% block search %}{% endblock %}
       <nav>
         <nav class="login-sign-up" id="nav">
