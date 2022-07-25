@@ -21,7 +21,7 @@ class User(db.Model, UserMixin):
     about_me = db.Column(db.Text, nullable=True)
     posts = db.relationship('Post', backref='author', lazy=True)
     products = db.relationship('Products', backref='author', lazy=True)
-    liked_products = db.Column(db.String(60))
+    likes = db.relationship('Like', backref='user', passive_deletes=True)
 
     def get_reset_token(self, expires_sec=300):
         s = Serializer(current_app.config['SECRET_KEY'], expires_sec)
@@ -89,9 +89,15 @@ class Products(db.Model):
     date_posted = db.Column(db.DateTime, nullable=False,
                             default=datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    likes = db.relationship('Like', backref='products', passive_deletes=True)
 
     def __repr__(self):
         return f"POST('{self.product_name}', '{self.description}', '{self.product_price}')"
+
+class Like(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    author = db.Column(db.Integer, db.ForeignKey('user.id', ondelete="CASCADE"), nullable=False)
+    product_id = db.Column(db.Integer, db.ForeignKey('products.id', ondelete="CASCADE"), nullable=False)
 
 def init_db():
     db.drop_all()

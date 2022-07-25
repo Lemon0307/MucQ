@@ -1,14 +1,9 @@
-from fileinput import filename
-from click import format_filename
 from flask import render_template, url_for, redirect, request, flash, abort, Blueprint
 from flask_login.utils import login_required
 from flask_login import current_user
-from sqlalchemy import JSON
 from mucq.main_folder.forms import SearchForm
 from flask_wtf.csrf import CSRFProtect
 from mucq.products_folder.utils import save_picture
-
-from mucq.models import Products
 
 csrf = CSRFProtect()
 products = Blueprint('products', __name__)
@@ -29,15 +24,6 @@ def product_view(product_id):
     from mucq.__init__ import db
     import mucq.models
     form = ProductsForm()
-    """liking a product
-    if form.validate_on_submit:
-        liked_product_item = f"{product_id},{True}"
-        liked_product = User(liked_products=liked_product_item, author=current_user)
-        db.session.add(liked_product)
-        db.session.commit()
-        return flash('liked product!', 'success')
-    #x = liked_product_item.split(',')
-    liking a product"""
     product = mucq.models.Products.query.get_or_404(product_id)
     return render_template('/products/product_view.html', product=product, form=form)
 
@@ -87,4 +73,25 @@ def delete_product(product_id):
     db.session.delete(product)
     db.session.commit()
     flash('Product successfully deleted!', 'success')
+    return redirect(url_for('products.product'))
+
+@products.route('/like-product/<int:product_id>', methods=['GET'])
+@login_required
+def like(product_id):
+    from mucq.models import Products, Like
+    from mucq.__init__ import db
+
+    product = Products.query.filter_by(id=product_id)
+    like = Like.query.filter_by(author=current_user.id, product_id=product_id).first()
+
+    if not product:
+        flash('The product does not exist', 'danger')
+    elif like:
+        db.session.delete(like)
+        db.session.commit()
+    else:
+        like = Like(author=current_user.id, product_id=product_id)
+        db.session.add(like)
+        db.session.commit()
+
     return redirect(url_for('products.product'))
